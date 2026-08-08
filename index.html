@@ -3,3175 +3,1221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReSupply — Customer Reviews</title>
+  <title>Couch Donation Pickup in Boston | ReSupply</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --navy: #14295e;
-  --blue: #1a6fd4;
-  --blue-dark: #145bb0;
-  --red: #d8232a;
-  --red-dark: #b91d23;
-  --muted: #5d6b80;
-  --star: #f5a623;
-  --panel-top: #e8f0fa;
-  --panel-bottom: #f3f8fd;
-  --border: #e3e9ef;
-  --radius: 18px;
-  /* 56px logo + 0.75rem padding top/bottom + 1px border — sticky offsets
-     below the header must clear this */
-  --header-h: 81px;
-  /* Single content width for header, hero panel and sections so their
-     left/right edges line up down the page */
-  --page: 1400px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-body {
-  margin: 0;
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--navy);
-  background: #fff;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ---------------- Section headings ----------------
-   Single source of truth for every section heading on the page. Per-section
-   rules below set only margin / max-width / alignment, never type. */
-
-h2,
-.brands-title,
-.lifting-title,
-.process-copy h2,
-.trusted-copy h2,
-.reviews-head h2,
-.overview-copy h2,
-.giving-copy h2,
-.zip-copy h2 {
-  font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 45px;
-  line-height: 50px;
-  color: rgb(28, 36, 75);
-  letter-spacing: normal;
-}
-
-/* ---------------- Header ---------------- */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  max-width: var(--page);
-  margin: 0 auto;
-  padding: 0.75rem 1.75rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.brand img {
-  height: 56px;
-  width: auto;
-  display: block;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 2.6rem;
-  margin: 0 auto;
-}
-
-.main-nav a {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--navy);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.main-nav a:hover {
-  color: var(--blue);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-shrink: 0;
-}
-
-/* ---------------- Buttons ---------------- */
-
-.btn {
-  display: inline-block;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1;
-  padding: 0.85rem 1.6rem;
-  border-radius: 999px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
-}
-
-.btn-blue {
-  background: var(--blue);
-  color: #fff;
-}
-
-.btn-blue:hover {
-  background: var(--blue-dark);
-}
-
-.btn-outline {
-  background: #fff;
-  color: var(--navy);
-  border: 2px solid var(--blue);
-  padding: 0.72rem 1.6rem;
-}
-
-.btn-outline:hover {
-  background: var(--blue);
-  color: #fff;
-}
-
-.btn-red {
-  background: var(--red);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(216, 35, 42, 0.28);
-}
-
-.btn-red:hover {
-  background: var(--red-dark);
-  transform: translateY(-1px);
-}
-
-.btn-lg {
-  font-size: 1.05rem;
-  padding: 1.1rem 2.1rem;
-}
-
-/* ---------------- Hero ---------------- */
-
-.hero {
-  padding: 0 1rem 2rem;
-}
-
-.hero-panel {
-  max-width: var(--page);
-  margin: 0 auto;
-  background: linear-gradient(180deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
-  border-radius: 6px;
-  padding: 3.5rem 1.75rem 3rem;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.stars {
-  color: var(--star);
-  letter-spacing: 0.05em;
-  font-size: 0.85rem;
-}
-
-/* --- Headline --- */
-
-.hero-eyebrow {
-  margin: 0 0 1.1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--blue);
-}
-
-.hero-copy h1 {
-  margin: 0;
-  font-size: clamp(2.4rem, 4.2vw, 3.9rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-}
-
-.hero-lead {
-  margin: 1.4rem 0 0;
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.hero-sub {
-  margin: 0.9rem 0 1.9rem;
-  max-width: 32rem;
-  font-size: 1.08rem;
-  color: var(--muted);
-}
-
-/* --- Rating row --- */
-
-.rating-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.4rem;
-  margin-bottom: 2.2rem;
-  font-size: 1rem;
-}
-
-.rating-row strong {
-  font-weight: 700;
-}
-
-/* Wordmark and badge carry different internal padding, so they are sized
-   to match optically rather than to the same pixel height */
-.hr-trustpilot {
-  height: 20px;
-  width: auto;
-  display: block;
-}
-
-.hr-bbb {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* --- Media collage --- */
-
-.hero-media {
-  position: relative;
-}
-
-.hero-photo {
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: #dfe8f3;
-  box-shadow: 0 10px 30px rgba(20, 41, 94, 0.12);
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 55%;
-  display: block;
-}
-
-/* --- Floating rating card --- */
-
-.floating-card {
-  position: absolute;
-  left: -1.5rem;
-  bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem 1.4rem;
-  box-shadow: 0 8px 28px rgba(20, 41, 94, 0.16);
-}
-
-.fc-score {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.1rem;
-  line-height: 1;
-}
-
-.fc-num {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-.fc-den {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--blue);
-  margin-right: 0;
-}
-
-/* The stars row sets .fc-score's width because it is wider than "4.8/5";
-   dropping the tracking narrows the box so the text sits beside the number
-   instead of beside the stars' overhang */
-.fc-score .stars {
-  flex-basis: 100%;
-  margin-top: 0.07rem;
-  letter-spacing: 0;
-}
-
-.fc-text {
-  margin-left: -0.35rem;
-}
-
-.fc-text p {
-  margin: 0;
-  font-size: 0.92rem;
-  /* body line-height is 1.6; the two stacked lines read as one block at 1.2 */
-  line-height: 1.2;
-}
-
-.fc-muted {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-/* ---------------- Platform bar ---------------- */
-
-.platform-bar {
-  margin-top: 3rem;
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  box-shadow: 0 2px 10px rgba(20, 41, 94, 0.06);
-}
-
-.platform {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-decoration: none;
-  color: var(--navy);
-  flex: 1;
-  justify-content: center;
-}
-
-.p-divider {
-  width: 1px;
-  align-self: stretch;
-  background: var(--border);
-  flex-shrink: 0;
-}
-
-.p-logo {
-  display: block;
-  width: auto;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
-/* Each mark carries different internal padding and proportions, so heights
-   are tuned per logo to look the same size rather than measure the same */
-.p-resupply {
-  height: 40px;
-}
-
-/* Wide wordmark — the star plus "Trustpilot" reads large at any real height */
-.p-trustpilot {
-  height: 24px;
-}
-
-/* Square raster with generous white padding baked in, so it needs extra
-   height to match the others optically */
-.p-google {
-  height: 42px;
-}
-
-.p-bbb {
-  height: 38px;
-}
-
-.p-stats {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-}
-
-.p-stats strong {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-.p-stats small {
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.p-arrow {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.platform:hover .p-arrow {
-  color: var(--blue);
-}
-
-/* ---------------- Brands marquee ---------------- */
-
-.brands {
-  padding-bottom: 3rem;
-}
-
-.brands-title {
-  margin: 0 0 2.25rem;
-  text-align: left;
-}
-
-/* Viewport for the strip. Full-bleed on purpose so logos run off both edges. */
-.marquee {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 45s linear infinite;
-}
-
-/* Each group carries its own trailing gap, so translating exactly -50%
-   lands the duplicate on the original with no seam. */
-.marquee-group {
-  display: flex;
-  align-items: center;
-  gap: 4.5rem;
-  padding-right: 4.5rem;
-}
-
-.marquee-group img {
-  height: 64px;
-  width: auto;
-  max-width: 190px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-  .marquee { overflow-x: auto; }
-}
-
-/* ---------------- Pickup process ---------------- */
-
-.section {
-  padding: 4.5rem 0;
-}
-
-/* Matches the hero panel's content width so the two sections line up */
-.wrap {
-  max-width: var(--page);
-  margin: 0 auto;
-  padding: 0 1.75rem;
-}
-
-.process-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  /* start, not center — the map pins to the top and the steps scroll past it */
-  align-items: start;
-}
-
-/* Lottie injects its <svg> at 100%/100%, so the box must hold the
-   animation's own 900x522 ratio or it collapses to zero height */
-.process-map {
-  width: 100%;
-  aspect-ratio: 900 / 522;
-  /* Sticky bottoms out against the grid row, which the taller steps column
-     defines — so it releases exactly at the end of the section */
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-}
-
-.process-map svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.process-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue);
-}
-
-.process-copy h2 {
-  margin: 0 0 2rem;
-  max-width: 14em;
-}
-
-.process-steps {
-  list-style: none;
-  margin: 0 0 2.25rem;
-  padding: 0;
-  display: grid;
-  gap: 1.75rem;
-}
-
-.process-steps li {
-  display: flex;
-  gap: 1.1rem;
-}
-
-/* Icon aligns to the cap height of the step heading, not the block's centre */
-.process-icon {
-  flex-shrink: 0;
-  padding-top: 0.15rem;
-}
-
-/* Brand icons ship their own palette (#0261ad + light-blue fills) and a
-   148.47x130 viewBox, so they are sized by height and left uncoloured */
-.process-icon img {
-  height: 52px;
-  width: auto;
-  display: block;
-}
-
-.process-text h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.process-text p {
-  margin: 0 0 0.75rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.process-text p:last-child {
-  margin-bottom: 0;
-}
-
-.process-text strong {
-  color: var(--navy);
-  font-weight: 700;
-}
-
-.process-text a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.process-text a:hover {
-  color: var(--blue);
-  text-decoration: underline;
-}
-
-/* ---------------- Trusted partner ---------------- */
-
-.trusted {
-  background: var(--panel-bottom);
-}
-
-/* Full-bleed split: the photo runs to the viewport edge, the copy keeps a
-   comfortable measure and stays optically aligned with the sections above */
-.trusted-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-}
-
-.trusted-copy {
-  padding: 4.5rem clamp(1.5rem, 4vw, 4rem);
-  max-width: 46rem;
-  justify-self: end;
-  width: 100%;
-}
-
-.trusted-copy h2 {
-  margin: 0 0 1.5rem;
-}
-
-.trusted-lead {
-  margin: 0 0 1.5rem;
-  font-size: 0.98rem;
-  font-weight: 700;
-}
-
-.trusted-list {
-  list-style: none;
-  margin: 0 0 2rem;
-  padding: 0;
-  display: grid;
-  gap: 0.85rem;
-}
-
-/* Matches .overview-list: same padding, border, radius and hover lift */
-.trusted-list li {
-  position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 3.25rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-  line-height: 1.5;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(20, 41, 94, 0.05);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease,
-    transform 0.15s ease;
-}
-
-.trusted-list li:hover {
-  border-color: var(--blue);
-  box-shadow: 0 6px 18px rgba(20, 41, 94, 0.09);
-  transform: translateY(-1px);
-}
-
-/* Filled disc keeps the check readable against the card's white fill */
-.trusted-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 1.25rem;
-  top: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.trusted-close {
-  margin: 0 0 1.5rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* Contained photo, matching the hero's treatment: fixed 4:3 crop, rounded
-   corners and a soft lift, inset from the panel edge rather than full-bleed */
-/* Pins while the cards scroll past, releasing at the end of the grid row —
-   same behaviour as .overview-media. Top padding matches .trusted-copy's so
-   the photo's top edge lines up with the heading's cap line. */
-.trusted-media {
-  align-self: start;
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-  padding: 4.5rem clamp(1.5rem, 4vw, 4rem) 3rem;
-}
-
-.trusted-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
-  border-radius: var(--radius);
-  box-shadow: 0 10px 30px rgba(20, 41, 94, 0.12);
-}
-
-/* ---------------- Common items ---------------- */
-
-.items-title {
-  margin: 0 0 1.25rem;
-  text-align: center;
-}
-
-.items-intro {
-  max-width: 56rem;
-  margin: 0 auto 3.5rem;
-  text-align: center;
-}
-
-.items-intro p {
-  margin: 0 0 1rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.items-intro p:last-child {
-  margin-bottom: 0;
-}
-
-.items-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
-}
-
-.items-accordion {
-  display: grid;
-  gap: 0.75rem;
-}
-
-/* Shared accordion chrome — used by the item categories and the FAQ rows */
-.item-group,
-.faq {
-  background: var(--panel-bottom);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.item-group summary,
-.faq summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 1.4rem;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--navy);
-  cursor: pointer;
-  list-style: none;
-}
-
-/* Hide the native disclosure triangle in both engines */
-.item-group summary::-webkit-details-marker,
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-
-.item-group summary::after,
-.faq summary::after {
-  content: "+";
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--navy);
-  flex-shrink: 0;
-}
-
-.item-group[open] summary::after,
-.faq[open] summary::after {
-  content: "−";
-}
-
-.item-group summary:hover,
-.faq summary:hover {
-  color: var(--blue);
-}
-
-.item-group .chips {
-  list-style: none;
-  margin: 0;
-  padding: 0 1.4rem 1.3rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.item-group .chips li {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.4rem 0.95rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-/* ---------------- Footer ---------------- */
-
-.site-footer {
-  padding: 4rem 0 2rem;
-  background: #fff;
-  border-top: 1px solid var(--border);
-}
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: start;
-}
-
-/* --- Left rail --- */
-
-.footer-logo {
-  display: block;
-  height: 82px;
-  width: auto;
-  margin-bottom: 2.5rem;
-}
-
-.footer-social {
-  list-style: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 1.15rem;
-}
-
-.footer-social a {
-  display: block;
-  color: var(--navy);
-}
-
-.footer-social a:hover {
-  color: var(--blue);
-}
-
-/* Instagram is line art, the rest are solid glyphs — both inherit colour */
-.footer-social svg {
-  display: block;
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-}
-
-.footer-social svg.solid {
-  fill: currentColor;
-  stroke: none;
-}
-
-.footer-social svg .dot {
-  fill: currentColor;
-  stroke: none;
-}
-
-.footer-bbb {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  margin-bottom: 1.25rem;
-}
-
-.footer-rating {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem 0.6rem;
-  font-size: 0.85rem;
-  color: var(--navy);
-}
-
-.footer-rating strong {
-  font-weight: 700;
-}
-
-.footer-rating img {
-  height: 15px;
-  width: auto;
-  display: block;
-}
-
-/* --- Right side --- */
-
-.footer-lead {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-bottom: 3.5rem;
-}
-
-.footer-lead p {
-  margin: 0;
-  max-width: 26rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--navy);
-}
-
-/* Stacked, and matched in width so the two pills align on both edges */
-.footer-actions {
-  display: grid;
-  gap: 0.6rem;
-  justify-items: stretch;
-}
-
-.footer-actions .btn {
-  text-align: center;
-  font-size: 0.85rem;
-  padding: 0.7rem 1.5rem;
-}
-
-.footer-actions .btn-outline {
-  padding: 0.6rem 1.5rem;
-}
-
-.footer-nav {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.footer-nav h3 {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: normal;
-}
-
-.footer-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.footer-nav a {
-  font-size: 0.92rem;
-  color: var(--navy);
-  text-decoration: none;
-}
-
-.footer-nav a:hover {
-  color: var(--blue);
-}
-
-/* --- Legal bar --- */
-
-.footer-legal {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.9rem;
-  color: var(--navy);
-}
-
-.footer-legal a {
-  color: var(--navy);
-  text-decoration: none;
-}
-
-.footer-legal a:hover {
-  color: var(--blue);
-}
-
-.footer-legal span[aria-hidden] {
-  color: var(--border);
-}
-
-/* ---------------- FAQ ---------------- */
-
-.faqs-title {
-  margin: 0 0 1.25rem;
-  text-align: center;
-}
-
-.faqs-intro {
-  max-width: 46rem;
-  margin: 0 auto 3rem;
-  text-align: center;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.faqs-list {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.faq-body {
-  padding: 0 1.4rem 1.3rem;
-}
-
-.faq-body p {
-  margin: 0;
-  font-size: 0.97rem;
-  color: var(--muted);
-  line-height: 1.55;
-  max-width: 62rem;
-}
-
-/* The pale circle behind the objects is baked into the animation, so the
-   frame just holds its 560x700 ratio. Pulled up so the circle sits level
-   with the top of the accordion rather than below it. */
-.items-art {
-  aspect-ratio: 4 / 5;
-  margin-top: -3rem;
-}
-
-.items-art svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* ---------------- Heavy lifting ---------------- */
-
-.lifting-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue);
-}
-
-.lifting-title {
-  margin: 0 0 1.25rem;
-  text-align: left;
-}
-
-.lifting-intro {
-  margin: 0 0 3rem;
-  max-width: 46rem;
-  font-size: 0.98rem;
-  color: var(--muted);
-}
-
-.lifting-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.lift-card {
-  background: var(--panel-bottom);
-  padding: 1.25rem 1.25rem 2rem;
-}
-
-/* Reserve the frame before Lottie injects its SVG, so the grid does not
-   reflow when the three animations finish loading */
-.lift-art {
-  aspect-ratio: 36 / 29;
-  background: #fff;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-}
-
-.lift-art svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.lift-card h3 {
-  margin: 0 0 1.1rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.lift-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.lift-list li {
-  position: relative;
-  padding-left: 1.9rem;
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-.lift-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: -0.05rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-.process-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-arrow {
-  font-size: 0.85em;
-}
-
-/* ---------------- Reviews ---------------- */
-
-.reviews-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem 2rem;
-  margin-bottom: 2.5rem;
-}
-
-.reviews-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue);
-}
-
-.reviews-head h2 {
-  margin: 0;
-}
-
-/* --- Scroller controls --- */
-
-.reviews-nav {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.rev-btn {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  background: var(--blue);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.15s ease, opacity 0.15s ease;
-}
-
-.rev-btn:hover:not(:disabled) {
-  background: var(--blue-dark);
-}
-
-.rev-btn:disabled {
-  background: #c3d3e6;
-  cursor: default;
-}
-
-.rev-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* --- Horizontal scroller --- */
-
-.review-cards {
-  /* Cards size off these two, so the visible count is one number to change */
-  --rev-visible: 3;
-  --rev-gap: 1.5rem;
-
-  display: flex;
-  gap: var(--rev-gap);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 1px;
-  /* Bottom only — the resting shadow is vertical, and side padding would
-     throw off the exact-thirds math below */
-  padding-bottom: 1.25rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.review-cards::-webkit-scrollbar {
-  display: none;
-}
-
-.review-card {
-  flex: 0 0 calc(
-    (100% - (var(--rev-visible) - 1) * var(--rev-gap)) / var(--rev-visible)
-  );
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 1.15rem 1.25rem 1rem;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(20, 41, 94, 0.05);
-}
-
-.rc-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.7rem;
-}
-
-.rc-who {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  line-height: 1.3;
-}
-
-.rc-who strong {
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-.rc-loc {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.rc-loc svg {
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* The row stretches to its tallest card, so the long reviews are clamped —
-   otherwise one 8-line quote sets the height for all eight cards */
-.rc-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0 0 1rem;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-/* Pinned to the bottom so the charity blocks line up across cards of
-   uneven quote length */
-.rc-charity {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: auto;
-  padding-top: 0.85rem;
-  border-top: 1px solid var(--border);
-}
-
-.rc-charity img {
-  width: 38px;
-  height: 26px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
-.rc-charity span {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.3;
-}
-
-.rc-label {
-  font-size: 0.66rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.rc-charity strong {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-/* ---------------- Service overview + schedule ---------------- */
-
-.overview-grid,
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
-}
-
-.overview-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue);
-}
-
-.overview-copy h2 {
-  margin: 0 0 1.25rem;
-  max-width: 14em;
-}
-
-.overview-intro {
-  margin: 0 0 2rem;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
-.overview-list,
-.schedule-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-}
-
-/* Check sits in the gutter so the bold title and its description share one
-   left edge, rather than the description hanging under the mark */
-.overview-list li,
-.schedule-list li {
-  position: relative;
-  padding: 1.25rem 1.5rem 1.25rem 3.25rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(20, 41, 94, 0.05);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease,
-    transform 0.15s ease;
-}
-
-.overview-list li:hover,
-.schedule-list li:hover {
-  border-color: var(--blue);
-  box-shadow: 0 6px 18px rgba(20, 41, 94, 0.09);
-  transform: translateY(-1px);
-}
-
-/* Filled disc keeps the check readable against the card's white fill */
-.overview-list li::before,
-.schedule-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 1.25rem;
-  top: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.overview-list strong,
-.schedule-list strong {
-  display: block;
-  margin-bottom: 0.15rem;
-  color: var(--navy);
-  font-weight: 700;
-}
-
-/* --- Schedule-specific --- */
-
-.schedule-copy h2 {
-  margin: 0 0 1.25rem;
-  max-width: 14em;
-}
-
-.schedule-copy p {
-  margin: 0 0 1.25rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.schedule-copy p strong,
-.schedule-copy p a {
-  color: var(--navy);
-  font-weight: 700;
-}
-
-.schedule-copy p a {
-  text-decoration: none;
-}
-
-.schedule-copy p a:hover {
-  color: var(--blue);
-  text-decoration: underline;
-}
-
-.schedule-copy .schedule-lead-last {
-  margin-bottom: 1.75rem;
-}
-
-/* Pins while the cards scroll past, releasing at the end of the grid row —
-   same behaviour as .overview-media */
-.schedule-media {
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-}
-
-/* Top-aligned rather than stretched, matching the grid's align-items: start */
-.schedule-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius);
-}
-
-/* Pins while the cards scroll past, releasing at the end of the grid row —
-   same behaviour as the pickup map */
-.overview-media {
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-}
-
-.overview-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  /* Matches the source photo's own 897x715, so nothing gets cropped */
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
-  border-radius: var(--radius);
-}
-
-/* ---------------- Full-bleed split (giving back + why) ---------------- */
-
-/* The photo runs to the viewport edge, so these sections deliberately sit
-   outside .wrap */
-.giving,
-.why {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #eef3f8;
-}
-
-.giving-media img,
-.why-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.giving-copy,
-.why-copy {
-  display: flex;
-  align-items: center;
-  padding: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.giving-inner,
-.why-inner {
-  max-width: 46rem;
-}
-
-.giving-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--blue);
-}
-
-.giving-copy h2 {
-  margin: 0 0 1.25rem;
-}
-
-.giving-copy p {
-  margin: 0 0 1rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-.cta-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* ---------------- Why Boston chooses ReSupply ---------------- */
-
-/* Unlike Giving Back, the photo does not stretch to the copy column's height —
-   it keeps its own crop and sits at the top of the row */
-.why {
-  align-items: start;
-}
-
-/* Pins while the cards scroll past, releasing at the end of the grid row —
-   same behaviour as .trusted-media. Top offset matches .why-copy's padding so
-   the photo's top edge lines up with the heading. */
-.why-media {
-  align-self: start;
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-  /* Tighter than .trusted-media — less inset means a larger photo and a
-     narrower gap to the cards */
-  padding: clamp(1.5rem, 2vw, 2rem) clamp(0.25rem, 0.5vw, 0.5rem);
-}
-
-.why-media img {
-  height: auto;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
-  box-shadow: 0 10px 30px rgba(20, 41, 94, 0.12);
-}
-
-.why-copy {
-  align-items: flex-start;
-  padding: clamp(1.5rem, 2vw, 2rem) clamp(0.75rem, 1.5vw, 1.25rem);
-}
-
-.why-copy h2 {
-  margin: 0 0 0.75rem;
-}
-
-/* Sized to land on two lines at the copy column's width */
-.why-lead {
-  margin: 0 0 1.5rem;
-  max-width: 44rem;
-  font-size: 0.97rem;
-  color: var(--muted);
-}
-
-/* One per row — the extra height is what gives the sticky photo its travel */
-.why-list {
-  list-style: none;
-  margin: 0 0 1.75rem;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-}
-
-/* Check sits in the gutter so the bold title and its description share one
-   left edge, rather than the description hanging under the mark */
-.why-list li {
-  position: relative;
-  padding: 1.1rem 1.25rem 1.1rem 3rem;
-  font-size: 0.92rem;
-  color: var(--muted);
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(20, 41, 94, 0.05);
-}
-
-/* Filled disc keeps the check readable against the card's white fill */
-.why-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 1.1rem;
-  top: 1.15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.why-list strong {
-  display: block;
-  margin-bottom: 0.1rem;
-  color: var(--navy);
-  font-weight: 700;
-}
-
-/* ---------------- Impact ---------------- */
-
-.impact-title {
-  margin: 0 0 0.75rem;
-  text-align: center;
-}
-
-.impact-intro {
-  max-width: 54rem;
-  margin: 0 auto 2.75rem;
-  text-align: center;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
-.impact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-}
-
-.impact-card {
-  padding: 1.75rem 1.75rem 1.5rem;
-  background: #cfe4fb;
-  border-radius: 12px;
-}
-
-/* Number left, icon right, sharing a baseline-ish row */
-.ic-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-/* Light weight on purpose — the size carries the emphasis, not the stroke */
-.ic-num {
-  font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--navy);
-}
-
-.ic-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  fill: none;
-  stroke: var(--navy);
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.impact-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--navy);
-}
-
-/* ---------------- Locations ---------------- */
-
-.locations {
-  background: #eef3f8;
-  text-align: center;
-}
-
-.loc-title {
-  margin: 0 0 1rem;
-}
-
-.loc-intro {
-  max-width: 52rem;
-  margin: 0 auto 1rem;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
-.loc-intro a {
-  color: var(--navy);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.loc-intro a:hover {
-  color: var(--blue);
-  text-decoration: underline;
-}
-
-.loc-label {
-  margin: 2rem 0 1.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blue);
-}
-
-.loc-grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-}
-
-/* Pill fills its cell so every tile is the same width regardless of label
-   length, rather than hugging the text like a flex-wrapped chip row */
-.loc-grid a {
-  display: block;
-  padding: 0.7rem 0.75rem;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--navy);
-  text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.loc-grid a:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-  box-shadow: 0 4px 14px rgba(20, 41, 94, 0.08);
-}
-
-/* ---------------- ZIP availability ---------------- */
-
-/* Compact band — the panel is a single row of controls, so it does not need
-   the 4.5rem the content sections use */
-.zipcheck {
-  margin-top: 15px;
-  padding: 0.75rem 0;
-}
-
-/* Panel runs the full content width, copy left and form right, rather than
-   the narrow centred card */
-.zip-panel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.25rem 3rem;
-  padding: clamp(0.85rem, 1.5vw, 1.15rem) clamp(1.5rem, 3vw, 2.25rem);
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(20, 41, 94, 0.08);
-}
-
-.zip-copy {
-  flex: 1 1 20rem;
-}
-
-/* Deliberately opts out of the shared 45px/600 heading scale — this is a
-   compact utility band, not a content section */
-.zip-copy h2 {
-  margin: 0 0 0.25rem;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 32px;
-}
-
-.zip-copy p {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--muted);
-}
-
-.zip-action {
-  flex: 0 1 auto;
-}
-
-.zip-form {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* Label wraps the input so the pin can sit inside the field box */
-.zip-field {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex: 1 1 15rem;
-}
-
-.zip-field svg {
-  position: absolute;
-  left: 0.9rem;
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
-  fill: none;
-  stroke: var(--muted);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.zip-field input {
-  width: 100%;
-  font: inherit;
-  font-size: 0.95rem;
-  padding: 0.85rem 1rem 0.85rem 2.5rem;
-  color: var(--navy);
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-}
-
-.zip-field input::placeholder {
-  color: #9aa8bb;
-}
-
-.zip-field input:focus {
-  outline: 2px solid var(--blue);
-  outline-offset: 1px;
-  border-color: transparent;
-}
-
-.zip-result {
-  margin: 0.75rem 0 0;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--blue);
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ---------------- Responsive ---------------- */
-
-@media (max-width: 1100px) {
-  .main-nav {
-    gap: 1.4rem;
-  }
-
-  .main-nav a {
-    font-size: 0.9rem;
-  }
-
-  .btn {
-    padding: 0.75rem 1.1rem;
-    font-size: 0.85rem;
-  }
-
-  /* Three across gets too cramped to read below this width */
-  .review-cards {
-    --rev-visible: 2;
-  }
-
-  /* "Philadelphia" and "Los Angeles" start wrapping inside their pills */
-  .loc-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 940px) {
-  .main-nav {
-    display: none;
-  }
-
-  .header-actions {
-    margin-left: auto;
-  }
-
-  .loc-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* 45px overflows narrow screens; scale down but keep the 1.11 ratio */
-  h2,
-  .brands-title,
-  .lifting-title,
-  .process-copy h2,
-  .trusted-copy h2,
-  .reviews-head h2,
-  .overview-copy h2,
-  .giving-copy h2 {
-    font-size: 34px;
-    line-height: 38px;
-  }
-
-  .lifting-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .impact-grid {
-    gap: 1.25rem;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .footer-nav {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 1.5rem;
-  }
-
-  .footer-actions {
-    justify-items: start;
-  }
-
-  /* Illustration drops below the list rather than shrinking beside it */
-  .items-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .items-art {
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  /* Stack with the photo on top, so the copy is not pushed below the fold */
-  .trusted-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trusted-media {
-    grid-row: 1;
-  }
-
-  .trusted-media {
-    padding: 0 1.5rem;
-  }
-
-  .trusted-media img {
-    aspect-ratio: 16 / 10;
-  }
-
-  .trusted-copy {
-    justify-self: start;
-    padding: 3rem 1.5rem;
-  }
-
-  .hero-grid,
-  .process-grid,
-  .overview-grid,
-  .schedule-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .giving,
-  .why {
-    grid-template-columns: 1fr;
-  }
-
-  /* Stacked, the photo has no copy column to match, so give it a fixed crop */
-  .giving-media img,
-  .why-media img {
-    aspect-ratio: 3 / 2;
-  }
-
-  /* Stacked, a pinned photo would sit on top of the cards */
-  .why-media {
-    position: static;
-    padding: 2.5rem 1.5rem 0;
-  }
-
-  /* Map turns decorative once stacked; cap it so the steps stay reachable.
-     Sticky is off here — pinned above the steps it would eat the viewport. */
-  .process-map {
-    max-width: 520px;
-    margin-inline: auto;
-    position: static;
-  }
-
-  /* Same reason — stacked, a pinned photo would sit on top of the cards */
-  .overview-media,
-  .schedule-media {
-    position: static;
-  }
-
-  .process-copy h2,
-  .overview-copy h2,
-  .schedule-copy h2 {
-    max-width: none;
-  }
-
-  .platform-bar {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1.25rem 2rem;
-  }
-
-  .platform {
-    flex: 0 0 auto;
-    justify-content: flex-start;
-  }
-
-  .p-divider {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  /* 40px logo + 0.6rem padding top/bottom + 1px border */
-  :root {
-    --header-h: 60px;
-  }
-
-  .review-cards {
-    --rev-visible: 1;
-    --rev-gap: 1rem;
-  }
-
-  .loc-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-
-  /* Field and button each take a full row rather than splitting a narrow one */
-  .zip-field,
-  .zip-form .btn {
-    flex: 1 1 100%;
-  }
-
-  .zip-form .btn {
-    justify-content: center;
-  }
-
-  .hero {
-    padding: 0 0.75rem 1.5rem;
-  }
-
-  .hero-panel {
-    padding: 2rem 1.25rem;
-  }
-
-  .header-inner {
-    padding: 0.6rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .brand img {
-    height: 40px;
-  }
-
-  .floating-card {
-    left: 0.5rem;
-    bottom: 0.5rem;
-    padding: 0.8rem 1rem;
-  }
-
-  .fc-num {
-    font-size: 1.6rem;
-  }
-
-  .section {
-    padding: 3rem 0;
-  }
-
-  .wrap {
-    padding: 0 1.1rem;
-  }
-
-  .process-steps {
-    gap: 1.4rem;
-  }
-
-  .process-icon img {
-    height: 40px;
-  }
-
-  .lifting-grid,
-  .impact-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .marquee-group {
-    gap: 2.75rem;
-    padding-right: 2.75rem;
-  }
-
-  .marquee-group img {
-    height: 46px;
-    max-width: 140px;
-  }
-}
-</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:     "#14295e",
+            ink:      "#1c244b",   /* heading colour: rgb(28, 36, 75) */
+            blue:     "#1a6fd4",
+            bluedark: "#145bb0",
+            red:      "#d8232a",
+            reddark:  "#b91d23",
+            muted:    "#5d6b80",
+            star:     "#f5a623",
+            paneltop: "#e8f0fa",
+            panel:    "#f3f8fd",
+            line:     "#e3e9ef"
+          },
+          fontFamily: {
+            sans:    ['Poppins', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            heading: ['Rubik', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
+          },
+          maxWidth: { page: "1400px" },
+          spacing:  { header: "81px" },
+          keyframes: {
+            marquee: {
+              from: { transform: "translateX(0)" },
+              to:   { transform: "translateX(-50%)" }
+            }
+          },
+          animation: { marquee: "marquee 45s linear infinite" }
+        }
+      }
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body { @apply font-sans text-navy bg-white leading-relaxed antialiased; }
+      a { @apply text-blue; }
+    }
+
+    @layer components {
+      /* Shared page gutter */
+      .wrap { @apply max-w-[1240px] mx-auto px-7; }
+
+      /* One source of truth for every section heading:
+         Rubik 600, 45px/50px, rgb(28,36,75) — 34px/38px under 940px */
+      .h-section {
+        @apply font-heading font-semibold text-ink tracking-normal
+               text-[34px] leading-[38px] lg:text-[45px] lg:leading-[50px];
+      }
+
+      .eyebrow { @apply text-[0.85rem] font-bold uppercase tracking-[0.12em] text-blue; }
+
+      /* Buttons */
+      .btn {
+        @apply inline-block font-sans font-bold text-[0.95rem] leading-none
+               px-6 py-[0.85rem] rounded-full no-underline whitespace-nowrap
+               cursor-pointer transition-colors duration-150;
+      }
+      .btn-blue    { @apply bg-blue text-white hover:bg-bluedark; }
+      .btn-outline { @apply bg-white text-navy border-2 border-blue px-6 py-[0.72rem] hover:bg-blue hover:text-white; }
+      .btn-lg      { @apply text-[1.05rem] px-[2.1rem] py-[1.1rem]; }
+      .cta-arrow   { @apply inline-flex items-center gap-2; }
+      .cta-arrow > span { @apply text-[0.85em]; }
+
+      /* Accordion chrome — shared by item categories and the FAQ */
+      .acc { @apply bg-panel rounded-md overflow-hidden; }
+      .acc > summary {
+        @apply flex items-center justify-between gap-4 px-[1.4rem] py-[1.1rem]
+               text-base font-bold text-navy cursor-pointer list-none
+               hover:text-blue;
+      }
+      .acc > summary::-webkit-details-marker { display: none; }
+      .acc > summary::after {
+        content: "+";
+        @apply text-2xl font-normal leading-none text-navy shrink-0;
+      }
+      .acc[open] > summary::after { content: "−"; }
+
+      /* Bordered card with a filled blue check disc in the gutter */
+      .check-card {
+        @apply relative bg-white border border-line rounded-2xl
+               pl-[3.25rem] pr-6 py-5 text-[0.97rem] text-muted
+               shadow-[0_2px_10px_rgba(20,41,94,0.05)]
+               transition duration-150
+               hover:border-blue hover:-translate-y-px
+               hover:shadow-[0_6px_18px_rgba(20,41,94,0.09)];
+      }
+      .check-card::before {
+        content: "✓";
+        @apply absolute left-5 top-[1.3rem] flex items-center justify-center
+               w-[22px] h-[22px] rounded-full bg-blue text-white
+               text-xs font-bold leading-none;
+      }
+      .check-card > strong { @apply block mb-0.5 text-navy font-bold; }
+
+      /* Lottie hosts: the player injects an <svg> that must fill the frame */
+      .lottie-box > svg { @apply block w-full h-full; }
+    }
+
+    @layer utilities {
+      .visually-hidden {
+        position: absolute; width: 1px; height: 1px; margin: -1px;
+        padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+      }
+      /* Fades the marquee's leading and trailing edges */
+      .marquee-mask {
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+                mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      }
+      .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-marquee { animation: none !important; }
+    }
+  </style>
 </head>
-<body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#">
-        <img src="ReSupply-Logo-Rendered-e1698694854259.webp" alt="ReSupply">
-      </a>
+<body class="scroll-smooth">
 
-      <nav class="main-nav">
-        <a href="#">Donate</a>
-        <a href="#">Our Mission</a>
-        <a href="#">Locations</a>
-        <a href="#">Partner With Us</a>
-        <a href="#">Resources</a>
-      </nav>
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white border-b border-line">
+  <div class="max-w-page mx-auto px-7 py-3 flex items-center gap-6">
+    <a href="#" class="shrink-0">
+      <img src="ReSupply-Logo-Rendered-e1698694854259.webp" alt="ReSupply" class="block h-14 w-auto">
+    </a>
 
-      <div class="header-actions">
-        <a class="btn btn-blue" href="#schedule">Schedule Donation</a>
-        <a class="btn btn-outline" href="tel:7654366283">7654-DONATE</a>
+    <nav class="hidden lg:flex items-center gap-10 mx-auto">
+      <a href="#" class="text-base font-semibold text-navy no-underline whitespace-nowrap hover:text-blue">Donate</a>
+      <a href="#" class="text-base font-semibold text-navy no-underline whitespace-nowrap hover:text-blue">Our Mission</a>
+      <a href="#" class="text-base font-semibold text-navy no-underline whitespace-nowrap hover:text-blue">Locations</a>
+      <a href="#" class="text-base font-semibold text-navy no-underline whitespace-nowrap hover:text-blue">Partner With Us</a>
+      <a href="#" class="text-base font-semibold text-navy no-underline whitespace-nowrap hover:text-blue">Resources</a>
+    </nav>
+
+    <div class="flex items-center gap-2.5 shrink-0 ml-auto lg:ml-0">
+      <a class="btn btn-blue" href="#schedule">Schedule Donation</a>
+      <a class="btn btn-outline" href="tel:7654366283">7654-DONATE</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="px-4 pb-8">
+    <div class="max-w-page mx-auto rounded-md px-7 pt-14 pb-12 bg-gradient-to-b from-paneltop to-panel">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div>
+          <p class="mb-[1.1rem] text-[0.95rem] font-bold uppercase tracking-[0.04em] text-blue">
+            Veteran Founded &bull; Service Driven
+          </p>
+
+          <h1 class="m-0 font-extrabold leading-[1.08] tracking-tight text-[2.4rem] lg:text-[3.9rem]">
+            Couch Donation Pickup in Boston
+          </h1>
+
+          <p class="mt-6 mb-0 text-[1.08rem] font-bold text-navy">
+            ReSupply is Trusted by 3,000+ Charity Partners Nationwide.
+          </p>
+
+          <p class="mt-[0.9rem] mb-[1.9rem] max-w-[32rem] text-[1.08rem] text-muted">
+            Your couch gets carried out, loaded, and delivered to a Boston
+            charity, without you lifting an armrest.
+          </p>
+
+          <a class="btn btn-blue btn-lg cta-arrow" href="#schedule">
+            Schedule A Pickup <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="relative">
+          <div class="rounded-[18px] overflow-hidden aspect-[4/3] bg-[#dfe8f3] shadow-[0_10px_30px_rgba(20,41,94,0.12)]">
+            <img src="DSC_2039-1-scaled-1-1536x1024.jpg"
+                 alt="Two ReSupply crew members carrying an armchair to a ReSupply donation truck"
+                 class="block w-full h-full object-cover object-[center_55%]">
+          </div>
+
+          <div class="absolute -left-6 bottom-6 flex items-center gap-0 bg-white rounded-xl px-[1.4rem] py-4 shadow-[0_8px_28px_rgba(20,41,94,0.16)]">
+            <div class="flex items-baseline flex-wrap gap-[0.1rem] leading-none">
+              <span class="text-[2rem] font-bold text-blue">4.8</span><span class="text-base font-semibold text-blue">/5</span>
+              <span class="basis-full mt-[0.07rem] text-[0.85rem] tracking-normal text-star" aria-hidden="true">★★★★★</span>
+            </div>
+            <div class="-ml-1.5">
+              <p class="m-0 text-[0.92rem] leading-[1.2]">Rated <strong class="font-bold">Excellent</strong></p>
+              <p class="m-0 text-[0.85rem] leading-[1.2] text-muted">across 61,264 reviews</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Review platform bar -->
+      <div class="mt-12 max-w-page mx-auto bg-white rounded-xl px-8 py-[1.35rem]
+                  flex flex-wrap lg:flex-nowrap items-center justify-between gap-5 lg:gap-4
+                  shadow-[0_4px_20px_rgba(20,41,94,0.08)]">
+        <a class="flex items-center gap-2.5 no-underline text-navy lg:flex-1 lg:justify-center" href="#">
+          <img src="card-logo/resupply.png" alt="ReSupply" class="block w-auto h-10 shrink-0 object-contain">
+          <span class="flex flex-col leading-tight">
+            <strong class="text-[1.2rem] font-bold text-blue">4.9/5</strong>
+            <small class="text-[0.85rem] text-muted">37,089 reviews</small>
+          </span>
+        </a>
+
+        <span class="hidden lg:block w-px self-stretch bg-line shrink-0"></span>
+
+        <a class="flex items-center gap-2.5 no-underline text-navy lg:flex-1 lg:justify-center group" href="#">
+          <img src="card-logo/trustpilot.svg" alt="Trustpilot" class="block w-auto h-6 shrink-0 object-contain">
+          <span class="flex flex-col leading-tight">
+            <strong class="text-[1.2rem] font-bold text-blue">4.6/5</strong>
+            <small class="text-[0.85rem] text-muted">22,288 reviews</small>
+          </span>
+          <span class="text-[0.9rem] text-muted group-hover:text-blue" aria-hidden="true">↗</span>
+        </a>
+
+        <span class="hidden lg:block w-px self-stretch bg-line shrink-0"></span>
+
+        <a class="flex items-center gap-2.5 no-underline text-navy lg:flex-1 lg:justify-center group" href="#">
+          <img src="card-logo/google.jpg" alt="Google" class="block w-auto h-[42px] shrink-0 object-contain">
+          <span class="flex flex-col leading-tight">
+            <strong class="text-[1.2rem] font-bold text-blue">4.4/5</strong>
+            <small class="text-[0.85rem] text-muted">1,042 reviews</small>
+          </span>
+          <span class="text-[0.9rem] text-muted group-hover:text-blue" aria-hidden="true">↗</span>
+        </a>
+
+        <span class="hidden lg:block w-px self-stretch bg-line shrink-0"></span>
+
+        <a class="flex items-center gap-2.5 no-underline text-navy lg:flex-1 lg:justify-center group" href="#">
+          <img src="card-logo/bbb-a-plus.png" alt="BBB A+ Rating" class="block w-auto h-[38px] shrink-0 object-contain">
+          <span class="flex flex-col leading-tight">
+            <strong class="text-[1.2rem] font-bold text-blue">4.5/5</strong>
+            <small class="text-[0.85rem] text-muted">845 reviews</small>
+          </span>
+          <span class="text-[0.9rem] text-muted group-hover:text-blue" aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="hero-panel">
-        <div class="hero-grid">
-
-          <div class="hero-copy">
-            <p class="hero-eyebrow">Veteran Founded &bull; Service Driven</p>
-
-            <h1>Couch Donation Pickup in Boston</h1>
-
-            <p class="hero-lead">ReSupply is Trusted by 3,000+ Charity Partners Nationwide.</p>
-
-            <p class="hero-sub">
-              Your couch gets carried out, loaded, and delivered to a Boston
-              charity, without you lifting an armrest.
-            </p>
-
-            <a class="btn btn-blue btn-lg hero-cta" href="#schedule">
-              Schedule A Pickup <span class="btn-arrow" aria-hidden="true">↗</span>
-            </a>
-          </div>
-
-          <div class="hero-media">
-            <div class="hero-photo">
-              <img src="DSC_2039-1-scaled-1-1536x1024.jpg"
-                   alt="Two ReSupply crew members carrying an armchair to a ReSupply donation truck">
-            </div>
-
-            <div class="floating-card">
-              <div class="fc-score">
-                <span class="fc-num">4.8</span><span class="fc-den">/5</span>
-                <span class="stars" aria-hidden="true">★★★★★</span>
-              </div>
-              <div class="fc-text">
-                <p>Rated <strong>Excellent</strong></p>
-                <p class="fc-muted">across 61,264 reviews</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="platform-bar">
-          <a class="platform" href="#">
-            <img class="p-logo p-resupply" src="card-logo/resupply.png" alt="ReSupply">
-            <span class="p-stats">
-              <strong>4.9/5</strong>
-              <small>37,089 reviews</small>
-            </span>
-          </a>
-
-          <span class="p-divider"></span>
-
-          <a class="platform" href="#">
-            <img class="p-logo p-trustpilot" src="card-logo/trustpilot.svg" alt="Trustpilot">
-            <span class="p-stats">
-              <strong>4.6/5</strong>
-              <small>22,288 reviews</small>
-            </span>
-            <span class="p-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <span class="p-divider"></span>
-
-          <a class="platform" href="#">
-            <img class="p-logo p-google" src="card-logo/google.jpg" alt="Google">
-            <span class="p-stats">
-              <strong>4.4/5</strong>
-              <small>1,042 reviews</small>
-            </span>
-            <span class="p-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <span class="p-divider"></span>
-
-          <a class="platform" href="#">
-            <img class="p-logo p-bbb" src="card-logo/bbb-a-plus.png" alt="BBB A+ Rating">
-            <span class="p-stats">
-              <strong>4.5/5</strong>
-              <small>845 reviews</small>
-            </span>
-            <span class="p-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ BRANDS MARQUEE ============ -->
-    <section class="section brands">
-      <div class="wrap">
-        <h2 class="brands-title">Trusted by Charities Nationwide</h2>
-      </div>
-
-      <div class="marquee">
-        <div class="marquee-track">
-          <div class="marquee-group">
-            <img src="brands/AMVets-1.png" alt="AMVets">
-            <img src="brands/Furniture-Friends-2-1.png" alt="Furniture Friends">
-            <img src="brands/Goodwill-NY-NJ-1.png" alt="Goodwill NY NJ">
-            <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="Goodwill Orange County">
-            <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="Habitat for Humanity Metro Denver">
-            <img src="brands/Habitat-Seattle-King-1.png" alt="Habitat for Humanity Seattle King County">
-            <img src="brands/Humane-Society-North-Central-Florida-1.png" alt="Humane Society of North Central Florida">
-            <img src="brands/Military-Missions-in-Action-1.jpg" alt="Military Missions in Action">
-            <img src="brands/Rescue-Mission-1.jpg" alt="Rescue Mission">
-            <img src="brands/SVdP-St-Louis-1.png" alt="St. Vincent de Paul St. Louis">
-            <img src="brands/The_Salvation_Army-1.png" alt="The Salvation Army">
-          </div>
-
-          <!-- Duplicate set: makes the -50% loop seamless. Hidden from AT. -->
-          <div class="marquee-group" aria-hidden="true">
-            <img src="brands/AMVets-1.png" alt="">
-            <img src="brands/Furniture-Friends-2-1.png" alt="">
-            <img src="brands/Goodwill-NY-NJ-1.png" alt="">
-            <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="">
-            <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="">
-            <img src="brands/Habitat-Seattle-King-1.png" alt="">
-            <img src="brands/Humane-Society-North-Central-Florida-1.png" alt="">
-            <img src="brands/Military-Missions-in-Action-1.jpg" alt="">
-            <img src="brands/Rescue-Mission-1.jpg" alt="">
-            <img src="brands/SVdP-St-Louis-1.png" alt="">
-            <img src="brands/The_Salvation_Army-1.png" alt="">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PICKUP PROCESS ============ -->
-    <section class="section process">
-      <div class="wrap process-grid">
-
-        <div class="process-map" id="pickup-map"
-             role="img"
-             aria-label="Map of the United States showing ReSupply donation pickup coverage"></div>
-
-        <div class="process-copy">
-          <p class="process-eyebrow">Pickup Process</p>
-          <h2>Our ReSupply Pickup Process in Boston</h2>
-
-          <ol class="process-steps">
-            <li>
-              <span class="process-icon" aria-hidden="true">
-                <img src="icons/resupply_Icons-16-1-1.svg" alt="">
-              </span>
-              <div class="process-text">
-                <h3>Step 1: Schedule Your Priority Pickup</h3>
-                <p>You can schedule a priority donation pickup with ReSupply <a href="#schedule"><strong>online</strong></a>, or contact us at <strong><a href="tel:7654366283">(765) 436-6283</a></strong>.</p>
-                <p>Pickup scheduling is flexible based on <strong>local availability</strong>. In most service areas, same-day or next-day pickup is available.</p>
-              </div>
-            </li>
-
-            <li>
-              <span class="process-icon" aria-hidden="true">
-                <img src="icons/resupply_Icons-01-1-2-1.svg" alt="">
-              </span>
-              <div class="process-text">
-                <h3>Step 2: Our ReSupply White-Glove Service</h3>
-                <p>Items should be clean, usable, and in good condition so they can continue serving <strong>local families and organizations</strong>.</p>
-              </div>
-            </li>
-
-            <li>
-              <span class="process-icon" aria-hidden="true">
-                <img src="icons/resupply_Icons-03-1-2-1.svg" alt="">
-              </span>
-              <div class="process-text">
-                <h3>Step 3: Donations, Delivered</h3>
-                <p>Donations in Boston go directly to vetted local charity partners doing meaningful work in your region. Every partner is accountable. Every pickup is tracked.</p>
-                <p>Every donor receives a tax receipt confirming their contribution.</p>
-              </div>
-            </li>
-          </ol>
-
-          <a class="btn btn-blue btn-lg process-cta" href="#schedule">
-            Schedule A Pickup <span class="btn-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ REVIEWS ============ -->
-    <section class="section reviews">
-      <div class="wrap">
-
-        <div class="reviews-head">
-          <div>
-            <p class="reviews-eyebrow">Reviews</p>
-            <h2>Boston Couch Donations,<br>In Their Words</h2>
-          </div>
-
-          <div class="reviews-nav">
-            <button class="rev-btn" type="button" data-rev-prev aria-label="Previous reviews">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-            </button>
-            <button class="rev-btn" type="button" data-rev-next aria-label="Next reviews">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="review-cards">
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Jennifer F.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Des Plaines, IL
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              John and Juan were very helpful and professional while helping
-              remove a couch from my home. Will use them again.
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/Goodwill-NY-NJ-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>Goodwill Greater Milwaukee &amp; Chicago</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Carol C.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Ventura, CA
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              Superbly organized! Excellent communication, easy access to
-              documents, flexible, and very upfront about all the details. The
-              pickup service that they organized also had great communication
-              skills, arrived on time per their notifications and did a fabulous
-              job getting a very large sofa sleeper out of a middle bedroom.
-              They were very kind and personable and very professional. I will
-              definitely use the service again!
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>Habitat for Humanity of Ventura County</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Leah M.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Bethesda, MD
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              Great. Super nice guys. SUPER HEAVY sofa and they got it out with
-              no damage.
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/Habitat-Seattle-King-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>Habitat for Humanity Metro Maryland</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Douglas M.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Portland, OR
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              The drivers were absolutely terrific. Friendly, professional, and
-              they worked hard to get a large and ungainly sofa out of my
-              basement. I was not expecting the pick up to be so pleasant —
-              they made it so!
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>Goodwill Industries of the Columbia Willamette</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Angela M.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Plainwell, MI
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              Great wonderful service. Handled our giant sectional couch like it
-              was nothing. Highly recommend! And will use again in the future.
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/The_Salvation_Army-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>The Salvation Army Central Territory: Grand Rapids ARC</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Shawn C.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Chicago, IL
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              The two movers worked hard on a challenging sofa. They also
-              cleaned everything up afterward. Thanks so much!
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/The_Salvation_Army-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>The Salvation Army Central Territory: Chicago ARC</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Michael M.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Westfield, IN
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              Marvelle provided an excellent service, great communication prior
-              to arrival, quickly moved the couch and chair with a positive
-              attitude! The quote was exact and the payment process was so easy
-              online.
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/SVdP-St-Louis-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>St. Vincent de Paul</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-          <figure class="review-card">
-            <header class="rc-head">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rc-who">
-                <strong>Karen P.</strong>
-                <span class="rc-loc">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                  Milford, OH
-                </span>
-              </span>
-            </header>
-            <p class="rc-text">
-              The guys who picked up our sofa were friendly and polite. They
-              arrived on time and promptly and without any issues removed our
-              donation. Would use this service again.
-            </p>
-            <figcaption class="rc-charity">
-              <img src="brands/The_Salvation_Army-1.png" alt="">
-              <span>
-                <span class="rc-label">Verified donation to</span>
-                <strong>The Salvation Army Eastern Territory: Cincinnati ARC</strong>
-              </span>
-            </figcaption>
-          </figure>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ SERVICE OVERVIEW ============ -->
-    <section class="section overview">
-      <div class="wrap overview-grid">
-
-        <div class="overview-copy">
-          <p class="overview-eyebrow">Service Overview</p>
-          <h2>Couch Donation Pickup in Boston</h2>
-
-          <p class="overview-intro">
-            Boston donors know the drill: narrow streets, walk-ups, and no easy
-            way to get a sofa from Beacon Hill or Southie to a charity that can
-            use it. ReSupply solves that with scheduled donation pickups across
-            all 35 covered Boston zip codes, from Dorchester to Charlestown.
-            Licensed and insured pickup teams carry items down the stairs, load
-            them, and deliver them to local nonprofit partners.
-          </p>
-
-          <ul class="overview-list">
-            <li>
-              <strong>Any Item, Any Room, Any Floor</strong>
-              We remove furniture from wherever it's located, including upstairs
-              rooms, basements, apartments, and office buildings.
-            </li>
-            <li>
-              <strong>Disassembly Included</strong>
-              Many furniture items can be disassembled on-site when necessary to
-              ensure safe removal.
-            </li>
-            <li>
-              <strong>No Item Too Bulky or Heavy</strong>
-              From oversized sectionals to large dining sets, our experienced
-              team handles the heavy lifting for you.
-            </li>
-          </ul>
-        </div>
-
-        <div class="overview-media">
-          <img src="services-img-5-1.jpg"
-               alt="Two ReSupply crew members carrying a wooden dresser down a front walkway">
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ GIVING BACK ============ -->
-    <section class="giving">
-      <div class="giving-media">
-        <img src="Group-Shot-Zoomed-1-scaled-1-1-1536x1052.jpg"
-             alt="The ReSupply team and Habitat for Humanity volunteers gathered around a donation truck">
-      </div>
-
-      <div class="giving-copy">
-        <div class="giving-inner">
-          <p class="giving-eyebrow">Giving Back</p>
-          <h2>Giving Back in Boston, MA</h2>
-
-          <p>
-            Donations booked in Boston stay in the Boston area, matched to one of
-            the 3,000 charity partners ReSupply works with across 48 states.
-            Teams are licensed and insured, service runs to any floor of the
-            building, and every donor receives a tax receipt. ReSupply was
-            founded by military veterans, and pickups run with the same precision
-            they brought to their service.
-          </p>
-
-          <p>
-            ReSupply works across charity categories: shelters, workforce
-            programs, faith-based programs, hospice resale operations, and family
-            services nonprofits.
-          </p>
-
-          <p>
-            Every partner is vetted. Every pickup is tracked. Every donor receives
-            a tax receipt confirming their contribution.
-          </p>
-
-          <div class="rating-row">
-            <strong>Excellent</strong>
-            <span><strong>4.6</strong> out of 5</span>
-            <img class="hr-trustpilot" src="card-logo/trustpilot.svg" alt="Trustpilot">
-            <img class="hr-bbb" src="card-logo/bbb-a-plus.png" alt="BBB A+ Rating">
-          </div>
-
-          <a class="btn btn-blue btn-lg cta-inline" href="#schedule">
-            Schedule A Pickup <span class="btn-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HEAVY LIFTING ============ -->
-    <section class="section lifting">
-      <div class="wrap">
-        <p class="lifting-eyebrow">Heavy Lifting</p>
-        <h2 class="lifting-title">Leave the Heavy Lifting to Us</h2>
-        <p class="lifting-intro">Booking takes minutes: list your items, pick a window, and see your confirmed price upfront. On pickup day a licensed and insured team arrives on time, carries items down from third-floor walk-ups or brownstone basements, and delivers them to a Boston-area nonprofit partner. Your tax-deductible donation receipt follows by email.</p>
-
-        <div class="lifting-grid">
-          <article class="lift-card">
-            <div class="lift-art" data-lottie="animations/Step-1_Sched_locat-1.json"></div>
-            <h3>Easy Booking</h3>
-            <ul class="lift-list">
-              <li>Book online or over the phone</li>
-              <li>Pickups scheduled in 24-48 hours</li>
-              <li>Upfront, transparent pricing</li>
-            </ul>
-          </article>
-
-          <article class="lift-card">
-            <div class="lift-art" data-lottie="animations/Step-2_Sched_locat-1.json"></div>
-            <h3>Professional Pickup</h3>
-            <ul class="lift-list">
-              <li>Licensed and insured pickup teams</li>
-              <li>Items accepted when clean, usable, and in good condition</li>
-              <li>Anywhere in the home, Disassembly is available</li>
-            </ul>
-          </article>
-
-          <article class="lift-card">
-            <div class="lift-art" data-lottie="animations/Step-3_Sched_locat-1.json"></div>
-            <h3>Responsible Removal</h3>
-            <ul class="lift-list">
-              <li>Nationwide network of charity partners</li>
-              <li>If necessary, we take items to multiple charities, and recycle the rest</li>
-              <li>Digital tax receipt provided upon delivery</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ TRUSTED PARTNER ============ -->
-    <section class="trusted">
-      <div class="trusted-grid">
-        <div class="trusted-copy">
-          <h2>Trusted Donation Pickup Partner Nationwide</h2>
-
-          <p class="trusted-close">The furniture you are ready to pass on could be the piece that makes someone else's new place feel like home.</p>
-
-          <p class="trusted-lead">Depending on your region, that might mean:</p>
-
-          <ul class="trusted-list">
-            <li>Supporting a transitional housing program furnishing apartments for families starting a new chapter.</li>
-            <li>Donating to a domestic violence shelter replacing worn furniture for families starting over.</li>
-            <li>Donating your home goods to a hospice resale shop whose proceeds fund direct patient care in your community.</li>
-          </ul>
-
-          <a class="btn btn-blue btn-lg hero-cta" href="#schedule">
-            Schedule A Pickup <span class="btn-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-
-        <div class="trusted-media">
-          <img src="services-hero-1.jpg"
-               alt="ReSupply crew carrying a wooden hutch out of a home">
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ IMPACT ============ -->
-    <section class="section impact">
-      <div class="wrap">
-        <h2 class="impact-title">How Your Donations Make an Impact</h2>
-        <p class="impact-intro">
-          Don't junk it. Donating items keep them out of landfill and gives them
-          a second life. Unwanted goods transform it into a resource for someone
-          in need. Support the environment, help the community.
-        </p>
-
-        <div class="impact-grid">
-
-          <article class="impact-card">
-            <header class="ic-head">
-              <span class="ic-num">$90M</span>
-              <svg class="ic-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 21.5s7-6.5 7-11.5a7 7 0 10-14 0c0 5 7 11.5 7 11.5z"/>
-                <circle cx="12" cy="9.7" r="2.6"/>
-              </svg>
-            </header>
-            <p>We have delivered $90M in resources to local charities.</p>
-          </article>
-
-          <article class="impact-card">
-            <header class="ic-head">
-              <span class="ic-num">80M LBS</span>
-              <svg class="ic-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7.6 6.9l1.9-3.2a1.7 1.7 0 012.9 0l1.6 2.7"/>
-                <path d="M17.3 9.6l1.8 3.1a1.7 1.7 0 01-1.4 2.6h-3.2"/>
-                <path d="M9.5 15.3H5.8a1.7 1.7 0 01-1.4-2.6l1.6-2.8"/>
-                <path d="M5.6 8l-1.5 2.6 3 .5M18.9 12.3l-.6-3-2.8 1.2M14.5 15.3l-2.8 1.7 2 2.3"/>
-              </svg>
-            </header>
-            <p>We've helped divert 80M pounds of waste from landfills.</p>
-          </article>
-
-          <article class="impact-card">
-            <header class="ic-head">
-              <span class="ic-num">$3,000+</span>
-              <svg class="ic-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M2.6 8.2l2.1-1.9 3.1.5 2.4-1.6 3.6.6 3.4-1.3 2.9 1.1 1.3 2.4-1.1 2.3.7 2.4-2.6 1.9-2.2 2.6-3.4.6-2.8 1.4-3.1-1.2-2.2-2.4-1.4-2.8.9-2.3-1.6-2.3z"/>
-              </svg>
-            </header>
-            <p>Your donations support 3000+ nonprofit locations nationwide.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ ZIP AVAILABILITY ============ -->
-    <section class="section zipcheck" id="schedule">
-      <div class="wrap">
-        <div class="zip-panel">
-
-          <div class="zip-copy">
-            <h2>We've Got You Covered</h2>
-            <p>Enter your ZIP to check availability in your area.</p>
-          </div>
-
-          <div class="zip-action">
-            <form class="zip-form" id="zip-form" novalidate>
-              <label class="zip-field">
-                <span class="visually-hidden">ZIP code</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                <input type="text" id="zip" name="zip" inputmode="numeric"
-                       pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 02110"
-                       autocomplete="postal-code" required>
-              </label>
-
-              <button class="btn btn-blue cta-inline" type="submit">
-                Check Availability <span class="btn-arrow" aria-hidden="true">↗</span>
-              </button>
-            </form>
-
-            <p class="zip-result" id="zip-result" role="status" hidden></p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ COMMON ITEMS ============ -->
-    <section class="section items">
-      <div class="wrap">
-        <h2 class="items-title">Common Household Items We Pickup</h2>
-
-        <div class="items-intro">
-          <p>Sofas, sectionals, loveseats, sleeper sofas, and recliners are the most requested donation items in Boston. ReSupply teams bring the equipment and manpower to move couches through tight hallways, stairwells, and doorways, then deliver them to a nonprofit partner that can put them to use.</p>
-          <p>In the rare case that an item cannot be accepted by a charity near you, we'll take it to be recycled.</p>
-        </div>
-
-        <div class="items-grid">
-          <div class="items-accordion">
-            <details class="item-group" open>
-              <summary>Living Room</summary>
-              <ul class="chips">
-                <li>Couch</li><li>Upholstered Chair</li><li>Bookshelf</li><li>Hutch</li>
-                <li>Area Rug</li><li>Coffee Table</li><li>Loveseat</li><li>End Table</li>
-                <li>Entryway Table</li><li>Recliner</li><li>Entertainment Center</li>
-                <li>Armoire</li><li>Television</li><li>Sectional</li><li>Lamp</li><li>Rug</li>
-              </ul>
-            </details>
-
-            <details class="item-group">
-              <summary>Bedroom</summary>
-              <ul class="chips">
-                <li>Bedframe</li><li>Mattress</li><li>Dresser</li><li>Bureau</li>
-                <li>Nightstand</li><li>Bedroom Lamp</li><li>Wardrobe</li>
-              </ul>
-            </details>
-
-            <details class="item-group">
-              <summary>Home Office</summary>
-              <ul class="chips">
-                <li>Desk</li><li>Desk Chair</li><li>Filing Cabinet</li>
-              </ul>
-            </details>
-
-            <details class="item-group">
-              <summary>Kitchen &amp; Dining Room</summary>
-              <ul class="chips">
-                <li>Kitchen Table</li><li>Dining Room Table</li><li>Kitchen Chair</li>
-                <li>Dining Room Chair</li><li>China Cabinet</li><li>Buffet</li>
-                <li>Countertop</li><li>Kitchen Appliance</li><li>Kitchen Cabinet</li><li>Stool</li>
-              </ul>
-            </details>
-
-            <details class="item-group">
-              <summary>Clothing</summary>
-              <ul class="chips">
-                <li>Gently-Worn Clothing</li><li>Outerwear</li><li>Footwear</li>
-                <li>Formalwear</li><li>Athletic Wear</li><li>Children's Clothing</li>
-                <li>New Undergarments</li><li>Seasonal Apparel</li><li>Accessories</li>
-              </ul>
-            </details>
-
-            <details class="item-group">
-              <summary>Business</summary>
-              <ul class="chips">
-                <li>Office Furniture</li><li>Electronics</li><li>Office Supplies</li>
-                <li>Breakroom Appliances</li><li>Decor</li><li>Storage Solutions</li>
-                <li>Retail Fixtures</li><li>Cleaning Equipment</li><li>Branded Merchandise</li>
-              </ul>
-            </details>
-          </div>
-
-          <!-- Comp runs 0-720, but the last item ("Bed") lives 549-720 and
-               exits on the final frames, leaving the canvas empty. Stopping
-               at 660 holds the bed on screen. -->
-          <div class="items-art"
-               data-lottie="animations/Items_illustration-1.json"
-               data-lottie-stop="660"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ WHY BOSTON CHOOSES RESUPPLY ============ -->
-    <section class="why">
-      <div class="why-media">
-        <img src="press-main-34-1-1536x1024.jpg"
-             alt="Three ReSupply crew members loading a white sofa into a donation truck">
-      </div>
-
-      <div class="why-copy">
-        <div class="why-inner">
-          <h2>Why Boston Chooses ReSupply</h2>
-
-          <p class="why-lead">
-            From Beacon Hill walk-ups to Dorchester triple-deckers, we handle the
-            stairs, the disassembly, and the delivery to a local charity.
-          </p>
-
-          <ul class="why-list">
-            <li>
-              <strong>Scheduled Convenience</strong>
-              Book online in minutes. Choose your pickup window and confirm your
-              address. Same-week availability in most markets.
-            </li>
-            <li>
-              <strong>Inside-Home Pickup</strong>
-              No curbside drop. No rental trucks. The team collects from any room
-              in your home, including upper floors.
-            </li>
-            <li>
-              <strong>Disassembly Included</strong>
-              Beds, bookshelves, sectionals, and other multi-piece furniture get
-              broken down on the spot at no additional charge.
-            </li>
-            <li>
-              <strong>Direct to Charity</strong>
-              Items go to a local nonprofit partner in your region. Not a
-              warehouse. Not a third-party auction. Straight to the organization
-              that needs them.
-            </li>
-            <li>
-              <strong>Tax Receipt Included</strong>
-              A tax receipt is delivered to your inbox after every completed
-              pickup, documenting your donation for filing purposes.
-            </li>
-            <li>
-              <strong>Accredited and Accountable</strong>
-              BBB Accredited and rated 4.6 stars on Trustpilot, with a
-              logistics-first approach to giving.
-            </li>
-          </ul>
-
-          <div class="rating-row">
-            <strong>Excellent</strong>
-            <span><strong>4.6</strong> out of 5</span>
-            <img class="hr-trustpilot" src="card-logo/trustpilot.svg" alt="Trustpilot">
-            <img class="hr-bbb" src="card-logo/bbb-a-plus.png" alt="BBB Accredited Business">
-          </div>
-
-          <a class="btn btn-blue btn-lg cta-inline" href="#schedule">
-            Schedule A Pickup <span class="btn-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SCHEDULE YOUR PICKUP ============ -->
-    <section class="section schedule">
-      <div class="wrap schedule-grid">
-
-        <div class="schedule-copy">
-          <h2>Schedule your couch donation pickup in Boston</h2>
-
-          <p>
-            Book online in minutes or call
-            <a href="tel:7654366283">(765) 436-6283</a>, open 9 a.m. to 8 p.m.
-            Eastern, 7 days a week. Walk-up or elevator building, the team comes
-            to you.
-          </p>
-
-          <p class="schedule-lead-last">
-            Call <a href="tel:7654366283">(765) 436-6283</a> or
-            <a href="#schedule">book online today</a> to schedule convenient
-            donation pickup in Boston.
-          </p>
-
-          <ul class="schedule-list">
-            <li>
-              <strong>Any Item, Any Room, Any Floor</strong>
-              We remove furniture from wherever it's located, including upstairs
-              rooms, basements, apartments, and office buildings.
-            </li>
-            <li>
-              <strong>Disassembly Included</strong>
-              Many furniture items can be disassembled on-site when necessary to
-              ensure safe removal.
-            </li>
-            <li>
-              <strong>No Item Too Bulky or Heavy</strong>
-              From oversized sectionals to large dining sets, our experienced
-              team handles the heavy lifting for you.
-            </li>
-          </ul>
-        </div>
-
-        <div class="schedule-media">
-          <img src="services-img-5-1.jpg"
-               alt="Two ReSupply crew members carrying a wooden dresser down a front walkway">
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ LOCATIONS ============ -->
-    <section class="section locations">
-      <div class="wrap">
-        <h2 class="loc-title">We pick up, so you can give back</h2>
-
-        <p class="loc-intro">
-          ReSupply makes donation pickup simple in Boston and across 48 states.
-          Whether you are clearing a whole house before a move or a single
-          dresser from a downsizing, we handle the scheduling, the heavy
-          lifting, and the delivery to a local charity. Giving made simple, the
-          way it should be.
-        </p>
-
-        <p class="loc-intro">
-          Looking for something else in Boston? We also pick up
-          <a href="#">couches</a>, <a href="#">mattresses</a>, and
-          <a href="#">appliances</a>, or
-          <a href="#">see all Boston donation pickup services</a>.
-        </p>
-
-        <p class="loc-label">Donation Pickup Available in 48 States</p>
-
-        <ul class="loc-grid">
-          <li><a href="#">Phoenix</a></li>
-          <li><a href="#">Boston</a></li>
-          <li><a href="#">St. Louis</a></li>
-          <li><a href="#">Chicago</a></li>
-          <li><a href="#">New York</a></li>
-          <li><a href="#">San Diego</a></li>
-          <li><a href="#">Los Angeles</a></li>
-          <li><a href="#">Philadelphia</a></li>
-          <li><a href="#">Washington</a></li>
-          <li><a href="#">Florida</a></li>
-          <li><a href="#">Texas</a></li>
-          <li><a href="#">+ 37 More</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ FAQ ============ -->
-    <section class="section faqs">
-      <div class="wrap">
-        <h2 class="faqs-title">Frequently Asked Questions</h2>
-
-        <p class="faqs-intro">Have questions about donation pickup in Boston? Our teams handle the heavy lifting from inside your home and deliver straight to local Boston-area charities. Book online or by phone today.</p>
-
-        <div class="faqs-list">
-          <details class="faq">
-            <summary>Do you pick up sectionals and sleeper sofas in Boston?</summary>
-            <div class="faq-body">
-              <p>Yes. Sectionals, sleeper sofas, loveseats, and recliners all qualify as long as they are clean, usable, and in good condition. The team disassembles sectionals when needed.</p>
-            </div>
-          </details>
-
-          <details class="faq">
-            <summary>What does a donation pickup cost in Boston?</summary>
-            <div class="faq-body">
-              <p>Priority pickups start at $99, and you see your exact price before you confirm. The price covers the team, the carry down however many flights your building has, transport, and delivery to a nonprofit partner. No surprises at the curb.</p>
-            </div>
-          </details>
-
-          <details class="faq">
-            <summary>How do I schedule a Boston pickup?</summary>
-            <div class="faq-body">
-              <p>Book online in a few minutes or call <a href="tel:7654366283">(765) 436-6283</a>, open 9 a.m. to 8 p.m. Eastern, 7 days a week. Choose the window that fits your week and the team handles the rest, stairs included.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="wrap footer-top">
-
-      <div class="footer-brand">
-        <img class="footer-logo" src="ReSupply-Logo-Rendered-e1698694854259.webp" alt="ReSupply">
-
-        <ul class="footer-social">
-          <li>
-            <a href="#" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle class="dot" cx="17.2" cy="6.8" r="1.2"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="solid">
-                <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.3-.04-1.3-.13-2.45-.13-2.4 0-4.05 1.47-4.05 4.18V9.9H7.5V13h2.7v8h3.3z"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="solid">
-                <path d="M6.94 8.5H3.9V21h3.04V8.5zM5.42 3a1.76 1.76 0 100 3.53A1.76 1.76 0 005.42 3zM20.1 21h-3.03v-6.1c0-1.45-.03-3.32-2.02-3.32-2.03 0-2.34 1.58-2.34 3.21V21H9.68V8.5h2.91v1.71h.04c.4-.77 1.4-1.58 2.88-1.58 3.08 0 3.65 2.03 3.65 4.67V21z"/>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Google">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="solid">
-                <path d="M12.24 10.29v3.35h5.58c-.24 1.44-1.7 4.23-5.58 4.23-3.36 0-6.1-2.78-6.1-6.2s2.74-6.2 6.1-6.2c1.91 0 3.19.81 3.92 1.51l2.67-2.57C17.1 2.8 14.87 1.8 12.24 1.8 6.9 1.8 2.6 6.1 2.6 11.44s4.3 9.64 9.64 9.64c5.56 0 9.25-3.91 9.25-9.41 0-.63-.07-1.11-.15-1.59h-9.1z"/>
-              </svg>
-            </a>
-          </li>
-        </ul>
-
-        <img class="footer-bbb" src="bbb-footer.svg" alt="BBB A+ Rating, Accredited Business">
-
-        <div class="footer-rating">
-          <strong>Excellent</strong>
-          <span><strong>4.6</strong> out of 5</span>
-          <img src="card-logo/trustpilot.svg" alt="Trustpilot">
-        </div>
-      </div>
-
-      <div class="footer-main">
-        <div class="footer-lead">
-          <p>Priority donation pickups within 24 hours and delivered to local non profits.</p>
-
-          <div class="footer-actions">
-            <a class="btn btn-blue" href="#schedule">Schedule Donation</a>
-            <a class="btn btn-outline" href="tel:7654366283">7654-DONATE</a>
-          </div>
-        </div>
-
-        <nav class="footer-nav" aria-label="Footer">
-          <div>
-            <h3>Our Services</h3>
-            <ul>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Customer Reviews</a></li>
-              <li><a href="#">Locations We Serve</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Our Mission</h3>
-            <ul>
-              <li><a href="#">Our Story</a></li>
-              <li><a href="#">Careers</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Partner With Us</h3>
-            <ul>
-              <li><a href="#">I'm a Charity</a></li>
-              <li><a href="#">I'm a Hauler</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Resources</h3>
-            <ul>
-              <li><a href="#">Donor Support</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Press</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-    </div>
-
+  <!-- ============ BRANDS MARQUEE ============ -->
+  <section class="py-12">
     <div class="wrap">
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <span aria-hidden="true">|</span>
-        <a href="#">Donor Terms of Use</a>
-        <span aria-hidden="true">|</span>
-        <a href="#">Charity Terms of Use</a>
-        <span aria-hidden="true">|</span>
-        <span class="footer-copy">2026 ReSupply, Inc.</span>
+      <h2 class="h-section text-left mb-9">Trusted by Charities Nationwide</h2>
+    </div>
+
+    <div class="overflow-hidden marquee-mask">
+      <div class="flex w-max animate-marquee hover:[animation-play-state:paused]">
+        <div class="flex items-center gap-11 pr-11 md:gap-[4.5rem] md:pr-[4.5rem]">
+          <img src="brands/AMVets-1.png" alt="AMVets" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Furniture-Friends-2-1.png" alt="Furniture Friends" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Goodwill-NY-NJ-1.png" alt="Goodwill NY NJ" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="Goodwill Orange County" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="Habitat for Humanity Metro Denver" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Habitat-Seattle-King-1.png" alt="Habitat for Humanity Seattle King County" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Humane-Society-North-Central-Florida-1.png" alt="Humane Society of North Central Florida" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Military-Missions-in-Action-1.jpg" alt="Military Missions in Action" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Rescue-Mission-1.jpg" alt="Rescue Mission" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/SVdP-St-Louis-1.png" alt="St. Vincent de Paul St. Louis" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/The_Salvation_Army-1.png" alt="The Salvation Army" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+        </div>
+
+        <!-- Duplicate set: makes the -50% loop seamless. Hidden from AT. -->
+        <div class="flex items-center gap-11 pr-11 md:gap-[4.5rem] md:pr-[4.5rem]" aria-hidden="true">
+          <img src="brands/AMVets-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Furniture-Friends-2-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Goodwill-NY-NJ-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Habitat-Seattle-King-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Humane-Society-North-Central-Florida-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Military-Missions-in-Action-1.jpg" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/Rescue-Mission-1.jpg" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/SVdP-St-Louis-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+          <img src="brands/The_Salvation_Army-1.png" alt="" class="h-12 md:h-16 w-auto max-w-[190px] object-contain shrink-0">
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- ============ PICKUP PROCESS ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap grid lg:grid-cols-2 gap-8 lg:gap-[4.5rem] items-center">
+
+      <div class="lottie-box mx-auto lg:mx-0 max-w-[520px] lg:max-w-none w-full"
+           id="pickup-map" role="img"
+           aria-label="Map of the United States showing ReSupply donation pickup coverage"></div>
+
+      <div>
+        <p class="eyebrow mb-3">Pickup Process</p>
+        <h2 class="h-section mb-8 max-w-[14em]">Our ReSupply Pickup Process in Boston</h2>
+
+        <ol class="list-none m-0 p-0 grid gap-6 mb-9">
+          <li class="flex gap-[1.1rem]">
+            <span class="shrink-0 pt-0.5" aria-hidden="true">
+              <img src="icons/resupply_Icons-16-1-1.svg" alt="" class="block h-10 md:h-[52px] w-auto">
+            </span>
+            <div>
+              <h3 class="m-0 mb-1.5 text-[1.1rem] font-bold leading-snug">Step 1: Schedule Your Priority Pickup</h3>
+              <p class="m-0 mb-3 text-[0.97rem] text-muted">You can schedule a priority donation pickup with ReSupply <a href="#schedule" class="text-inherit no-underline hover:text-blue hover:underline"><strong class="text-navy font-bold">online</strong></a>, or contact us at <strong class="text-navy font-bold"><a href="tel:7654366283" class="text-inherit no-underline hover:text-blue hover:underline">(765) 436-6283</a></strong>.</p>
+              <p class="m-0 text-[0.97rem] text-muted">Pickup scheduling is flexible based on <strong class="text-navy font-bold">local availability</strong>. In most service areas, same-day or next-day pickup is available.</p>
+            </div>
+          </li>
+
+          <li class="flex gap-[1.1rem]">
+            <span class="shrink-0 pt-0.5" aria-hidden="true">
+              <img src="icons/resupply_Icons-01-1-2-1.svg" alt="" class="block h-10 md:h-[52px] w-auto">
+            </span>
+            <div>
+              <h3 class="m-0 mb-1.5 text-[1.1rem] font-bold leading-snug">Step 2: Our ReSupply White-Glove Service</h3>
+              <p class="m-0 text-[0.97rem] text-muted">Items should be clean, usable, and in good condition so they can continue serving <strong class="text-navy font-bold">local families and organizations</strong>.</p>
+            </div>
+          </li>
+
+          <li class="flex gap-[1.1rem]">
+            <span class="shrink-0 pt-0.5" aria-hidden="true">
+              <img src="icons/resupply_Icons-03-1-2-1.svg" alt="" class="block h-10 md:h-[52px] w-auto">
+            </span>
+            <div>
+              <h3 class="m-0 mb-1.5 text-[1.1rem] font-bold leading-snug">Step 3: Donations, Delivered</h3>
+              <p class="m-0 mb-3 text-[0.97rem] text-muted">Donations in Boston go directly to vetted local charity partners doing meaningful work in your region. Every partner is accountable. Every pickup is tracked.</p>
+              <p class="m-0 text-[0.97rem] text-muted">Every donor receives a tax receipt confirming their contribution.</p>
+            </div>
+          </li>
+        </ol>
+
+        <a class="btn btn-blue btn-lg cta-arrow" href="#schedule">
+          Schedule A Pickup <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div>
+          <p class="eyebrow mb-3">Reviews</p>
+          <h2 class="h-section">Boston Couch Donations,<br>In Their Words</h2>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button class="w-11 h-11 grid place-items-center rounded-full border border-line bg-white text-navy cursor-pointer transition disabled:opacity-40 disabled:cursor-default hover:enabled:border-blue hover:enabled:text-blue"
+                  type="button" data-rev-prev aria-label="Previous reviews">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="w-11 h-11 grid place-items-center rounded-full border border-line bg-white text-navy cursor-pointer transition disabled:opacity-40 disabled:cursor-default hover:enabled:border-blue hover:enabled:text-blue"
+                  type="button" data-rev-next aria-label="Next reviews">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current stroke-2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="review-cards flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-2">
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Jennifer F.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Des Plaines, IL
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            John and Juan were very helpful and professional while helping
+            remove a couch from my home. Will use them again.
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/Goodwill-NY-NJ-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">Goodwill Greater Milwaukee &amp; Chicago</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Carol C.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Ventura, CA
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            Superbly organized! Excellent communication, easy access to
+            documents, flexible, and very upfront about all the details. The
+            pickup service that they organized also had great communication
+            skills, arrived on time per their notifications and did a fabulous
+            job getting a very large sofa sleeper out of a middle bedroom.
+            They were very kind and personable and very professional. I will
+            definitely use the service again!
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/Habitat-Metro-Denver_V2-3-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">Habitat for Humanity of Ventura County</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Leah M.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Bethesda, MD
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            Great. Super nice guys. SUPER HEAVY sofa and they got it out with
+            no damage.
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/Habitat-Seattle-King-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">Habitat for Humanity Metro Maryland</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Douglas M.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Portland, OR
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            The drivers were absolutely terrific. Friendly, professional, and
+            they worked hard to get a large and ungainly sofa out of my
+            basement. I was not expecting the pick up to be so pleasant —
+            they made it so!
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/Goodwill-Orange-County-scaled-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">Goodwill Industries of the Columbia Willamette</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Angela M.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Plainwell, MI
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            Great wonderful service. Handled our giant sectional couch like it
+            was nothing. Highly recommend! And will use again in the future.
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/The_Salvation_Army-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">The Salvation Army Central Territory: Grand Rapids ARC</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Shawn C.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Chicago, IL
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            The two movers worked hard on a challenging sofa. They also
+            cleaned everything up afterward. Thanks so much!
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/The_Salvation_Army-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">The Salvation Army Central Territory: Chicago ARC</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Michael M.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Westfield, IN
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            Marvelle provided an excellent service, great communication prior
+            to arrival, quickly moved the couch and chair with a positive
+            attitude! The quote was exact and the payment process was so easy
+            online.
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/SVdP-St-Louis-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">St. Vincent de Paul</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="review-card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31%] m-0 bg-white border border-line rounded-2xl p-6 shadow-[0_2px_10px_rgba(20,41,94,0.05)]">
+          <header class="mb-3">
+            <span class="block text-[0.85rem] tracking-[0.05em] text-star" aria-hidden="true">★★★★★</span>
+            <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <strong class="font-bold">Karen P.</strong>
+              <span class="inline-flex items-center gap-1 text-[0.85rem] text-muted">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.6]" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Milford, OH
+              </span>
+            </span>
+          </header>
+          <p class="m-0 mb-5 text-[0.95rem] text-muted">
+            The guys who picked up our sofa were friendly and polite. They
+            arrived on time and promptly and without any issues removed our
+            donation. Would use this service again.
+          </p>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-line">
+            <img src="brands/The_Salvation_Army-1.png" alt="" class="h-9 w-auto max-w-[72px] object-contain shrink-0">
+            <span class="flex flex-col">
+              <span class="text-[0.72rem] uppercase tracking-[0.06em] text-muted">Verified donation to</span>
+              <strong class="text-[0.85rem] font-bold">The Salvation Army Eastern Territory: Cincinnati ARC</strong>
+            </span>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SERVICE OVERVIEW ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap grid lg:grid-cols-2 gap-8 lg:gap-[4.5rem] items-start">
+
+      <div>
+        <p class="eyebrow mb-3">Service Overview</p>
+        <h2 class="h-section mb-5 max-w-[14em]">Couch Donation Pickup in Boston</h2>
+
+        <p class="mb-8 text-base text-muted">
+          Boston donors know the drill: narrow streets, walk-ups, and no easy
+          way to get a sofa from Beacon Hill or Southie to a charity that can
+          use it. ReSupply solves that with scheduled donation pickups across
+          all 35 covered Boston zip codes, from Dorchester to Charlestown.
+          Licensed and insured pickup teams carry items down the stairs, load
+          them, and deliver them to local nonprofit partners.
+        </p>
+
+        <ul class="list-none m-0 p-0 grid gap-4">
+          <li class="check-card">
+            <strong>Any Item, Any Room, Any Floor</strong>
+            We remove furniture from wherever it's located, including upstairs
+            rooms, basements, apartments, and office buildings.
+          </li>
+          <li class="check-card">
+            <strong>Disassembly Included</strong>
+            Many furniture items can be disassembled on-site when necessary to
+            ensure safe removal.
+          </li>
+          <li class="check-card">
+            <strong>No Item Too Bulky or Heavy</strong>
+            From oversized sectionals to large dining sets, our experienced
+            team handles the heavy lifting for you.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pins while the cards scroll past, releasing at the end of the row -->
+      <div class="lg:sticky lg:top-[calc(theme(spacing.header)+2rem)]">
+        <img src="services-img-5-1.jpg"
+             alt="Two ReSupply crew members carrying a wooden dresser down a front walkway"
+             class="block w-full h-auto aspect-[5/4] object-cover rounded-[18px]">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ GIVING BACK ============ -->
+  <section class="grid lg:grid-cols-2 bg-[#eef3f8]">
+    <div>
+      <img src="Group-Shot-Zoomed-1-scaled-1-1-1536x1052.jpg"
+           alt="The ReSupply team and Habitat for Humanity volunteers gathered around a donation truck"
+           class="block w-full h-full min-h-[320px] object-cover">
+    </div>
+
+    <div class="flex items-center">
+      <div class="px-6 py-14 lg:px-16 lg:py-20 max-w-[46rem]">
+        <p class="eyebrow mb-3">Giving Back</p>
+        <h2 class="h-section mb-5">Giving Back in Boston, MA</h2>
+
+        <p class="mb-4 text-[0.97rem] text-muted">
+          Donations booked in Boston stay in the Boston area, matched to one of
+          the 3,000 charity partners ReSupply works with across 48 states.
+          Teams are licensed and insured, service runs to any floor of the
+          building, and every donor receives a tax receipt. ReSupply was
+          founded by military veterans, and pickups run with the same precision
+          they brought to their service.
+        </p>
+
+        <p class="mb-4 text-[0.97rem] text-muted">
+          ReSupply works across charity categories: shelters, workforce
+          programs, faith-based programs, hospice resale operations, and family
+          services nonprofits.
+        </p>
+
+        <p class="mb-6 text-[0.97rem] text-muted">
+          Every partner is vetted. Every pickup is tracked. Every donor receives
+          a tax receipt confirming their contribution.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2.5 mb-9 text-base">
+          <strong class="font-bold">Excellent</strong>
+          <span><strong class="font-bold">4.6</strong> out of 5</span>
+          <img src="card-logo/trustpilot.svg" alt="Trustpilot" class="block h-5 w-auto">
+          <img src="card-logo/bbb-a-plus.png" alt="BBB A+ Rating" class="block h-8 w-auto">
+        </div>
+
+        <a class="btn btn-blue btn-lg cta-arrow" href="#schedule">
+          Schedule A Pickup <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HEAVY LIFTING ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+      <p class="eyebrow mb-3">Heavy Lifting</p>
+      <h2 class="h-section text-left mb-5">Leave the Heavy Lifting to Us</h2>
+      <p class="mb-12 max-w-[46rem] text-[0.98rem] text-muted">
+        Booking takes minutes: list your items, pick a window, and see your
+        confirmed price upfront. On pickup day a licensed and insured team
+        arrives on time, carries items down from third-floor walk-ups or
+        brownstone basements, and delivers them to a Boston-area nonprofit
+        partner. Your tax-deductible donation receipt follows by email.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <article class="bg-panel px-5 pt-5 pb-8">
+          <!-- aspect-ratio reserves the frame so the grid doesn't jump when
+               ~785 KB of Lottie JSON finishes parsing -->
+          <div class="lottie-box aspect-[36/29] bg-white mb-6"
+               data-lottie="animations/Step-1_Sched_locat-1.json"></div>
+          <h3 class="m-0 mb-[1.1rem] text-[1.15rem] font-bold tracking-tight">Easy Booking</h3>
+          <ul class="list-none m-0 p-0 grid gap-3.5">
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Book online or over the phone</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Pickups scheduled in 24-48 hours</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Upfront, transparent pricing</li>
+          </ul>
+        </article>
+
+        <article class="bg-panel px-5 pt-5 pb-8">
+          <div class="lottie-box aspect-[36/29] bg-white mb-6"
+               data-lottie="animations/Step-2_Sched_locat-1.json"></div>
+          <h3 class="m-0 mb-[1.1rem] text-[1.15rem] font-bold tracking-tight">Professional Pickup</h3>
+          <ul class="list-none m-0 p-0 grid gap-3.5">
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Licensed and insured pickup teams</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Items accepted when clean, usable, and in good condition</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Anywhere in the home, Disassembly is available</li>
+          </ul>
+        </article>
+
+        <article class="bg-panel px-5 pt-5 pb-8">
+          <div class="lottie-box aspect-[36/29] bg-white mb-6"
+               data-lottie="animations/Step-3_Sched_locat-1.json"></div>
+          <h3 class="m-0 mb-[1.1rem] text-[1.15rem] font-bold tracking-tight">Responsible Removal</h3>
+          <ul class="list-none m-0 p-0 grid gap-3.5">
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Nationwide network of charity partners</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">If necessary, we take items to multiple charities, and recycle the rest</li>
+            <li class="relative pl-[1.9rem] text-[0.95rem] text-muted leading-snug before:content-['✓'] before:absolute before:left-0 before:-top-px before:text-[1.05rem] before:font-bold before:text-blue">Digital tax receipt provided upon delivery</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUSTED PARTNER ============ -->
+  <section class="bg-panel">
+    <div class="grid lg:grid-cols-2 items-start">
+
+      <div class="w-full max-w-[46rem] justify-self-end px-6 py-14 lg:px-16 lg:py-[4.5rem]">
+        <h2 class="h-section mb-6">Trusted Donation Pickup Partner Nationwide</h2>
+
+        <p class="mb-6 text-[0.97rem] font-semibold text-navy">
+          The furniture you are ready to pass on could be the piece that makes
+          someone else's new place feel like home.
+        </p>
+
+        <p class="mb-6 text-[0.98rem] font-bold">Depending on your region, that might mean:</p>
+
+        <ul class="list-none m-0 p-0 grid gap-3.5 mb-8">
+          <li class="check-card">Supporting a transitional housing program furnishing apartments for families starting a new chapter.</li>
+          <li class="check-card">Donating to a domestic violence shelter replacing worn furniture for families starting over.</li>
+          <li class="check-card">Donating your home goods to a hospice resale shop whose proceeds fund direct patient care in your community.</li>
+        </ul>
+
+        <a class="btn btn-blue btn-lg cta-arrow" href="#schedule">
+          Schedule A Pickup <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <!-- Pins while the cards scroll past -->
+      <div class="row-start-1 lg:row-start-auto px-6 lg:px-16 pt-0 lg:pt-[4.5rem] pb-8 lg:sticky lg:top-[calc(theme(spacing.header)+2rem)]">
+        <img src="services-hero-1.jpg"
+             alt="ReSupply crew carrying a wooden hutch out of a home"
+             class="block w-full h-auto aspect-[16/10] lg:aspect-[4/3] object-cover rounded-[18px] shadow-[0_10px_30px_rgba(20,41,94,0.12)]">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+      <h2 class="h-section text-center mb-5">How Your Donations Make an Impact</h2>
+      <p class="max-w-[46rem] mx-auto mb-12 text-center text-[0.97rem] text-muted">
+        Don't junk it. Donating items keep them out of landfill and gives them
+        a second life. Unwanted goods transform it into a resource for someone
+        in need. Support the environment, help the community.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <article class="bg-panel rounded-2xl p-7">
+          <header class="flex items-center justify-between gap-4 mb-4">
+            <span class="text-[2.1rem] font-extrabold leading-none text-blue">$90M</span>
+            <svg viewBox="0 0 24 24" class="w-9 h-9 shrink-0 fill-none stroke-blue stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]" aria-hidden="true">
+              <path d="M12 21.5s7-6.5 7-11.5a7 7 0 10-14 0c0 5 7 11.5 7 11.5z"/>
+              <circle cx="12" cy="9.7" r="2.6"/>
+            </svg>
+          </header>
+          <p class="m-0 text-[0.95rem] text-muted">We have delivered $90M in resources to local charities.</p>
+        </article>
+
+        <article class="bg-panel rounded-2xl p-7">
+          <header class="flex items-center justify-between gap-4 mb-4">
+            <span class="text-[2.1rem] font-extrabold leading-none text-blue">80M LBS</span>
+            <svg viewBox="0 0 24 24" class="w-9 h-9 shrink-0 fill-none stroke-blue stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]" aria-hidden="true">
+              <path d="M7.6 6.9l1.9-3.2a1.7 1.7 0 012.9 0l1.6 2.7"/>
+              <path d="M17.3 9.6l1.8 3.1a1.7 1.7 0 01-1.4 2.6h-3.2"/>
+              <path d="M9.5 15.3H5.8a1.7 1.7 0 01-1.4-2.6l1.6-2.8"/>
+              <path d="M5.6 8l-1.5 2.6 3 .5M18.9 12.3l-.6-3-2.8 1.2M14.5 15.3l-2.8 1.7 2 2.3"/>
+            </svg>
+          </header>
+          <p class="m-0 text-[0.95rem] text-muted">We've helped divert 80M pounds of waste from landfills.</p>
+        </article>
+
+        <article class="bg-panel rounded-2xl p-7">
+          <header class="flex items-center justify-between gap-4 mb-4">
+            <span class="text-[2.1rem] font-extrabold leading-none text-blue">$3,000+</span>
+            <svg viewBox="0 0 24 24" class="w-9 h-9 shrink-0 fill-none stroke-blue stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]" aria-hidden="true">
+              <path d="M2.6 8.2l2.1-1.9 3.1.5 2.4-1.6 3.6.6 3.4-1.3 2.9 1.1 1.3 2.4-1.1 2.3.7 2.4-2.6 1.9-2.2 2.6-3.4.6-2.8 1.4-3.1-1.2-2.2-2.4-1.4-2.8.9-2.3-1.6-2.3z"/>
+            </svg>
+          </header>
+          <p class="m-0 text-[0.95rem] text-muted">Your donations support 3000+ nonprofit locations nationwide.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ZIP AVAILABILITY ============ -->
+  <section class="py-16 lg:py-[4.5rem]" id="schedule">
+    <div class="wrap">
+      <div class="bg-panel rounded-2xl px-6 py-10 lg:px-12 lg:py-12 flex flex-wrap items-center justify-between gap-8">
+
+        <div>
+          <h2 class="font-heading font-semibold text-ink text-[26px] leading-tight mb-1.5">We've Got You Covered</h2>
+          <p class="m-0 text-[0.97rem] text-muted">Enter your ZIP to check availability in your area.</p>
+        </div>
+
+        <div class="w-full lg:w-auto">
+          <form class="flex flex-wrap gap-2.5" id="zip-form" novalidate>
+            <label class="relative flex items-center grow lg:grow-0">
+              <span class="visually-hidden">ZIP code</span>
+              <svg viewBox="0 0 24 24" class="absolute left-4 w-[18px] h-[18px] fill-none stroke-muted stroke-[1.6] pointer-events-none" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <input type="text" id="zip" name="zip" inputmode="numeric"
+                     pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 02110"
+                     autocomplete="postal-code" required
+                     class="w-full lg:w-[230px] font-sans text-base bg-white text-navy border border-line rounded-full pl-11 pr-5 py-3.5 outline-none focus:ring-2 focus:ring-blue">
+            </label>
+
+            <button class="btn btn-blue cta-arrow" type="submit">
+              Check Availability <span aria-hidden="true">↗</span>
+            </button>
+          </form>
+
+          <p class="mt-3 mb-0 text-[0.9rem] font-semibold" id="zip-result" role="status" hidden></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMON ITEMS ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+      <h2 class="h-section text-center mb-5">Common Household Items We Pickup</h2>
+
+      <div class="max-w-[56rem] mx-auto mb-14 text-center">
+        <p class="mb-4 text-[0.97rem] text-muted">Sofas, sectionals, loveseats, sleeper sofas, and recliners are the most requested donation items in Boston. ReSupply teams bring the equipment and manpower to move couches through tight hallways, stairwells, and doorways, then deliver them to a nonprofit partner that can put them to use.</p>
+        <p class="m-0 text-[0.97rem] text-muted">In the rare case that an item cannot be accepted by a charity near you, we'll take it to be recycled.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-[4.5rem] items-start">
+        <div class="grid gap-3">
+          <details class="acc" open>
+            <summary>Living Room</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Couch</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Upholstered Chair</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Bookshelf</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Hutch</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Area Rug</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Coffee Table</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Loveseat</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">End Table</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Entryway Table</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Recliner</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Entertainment Center</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Armoire</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Television</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Sectional</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Lamp</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Rug</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary>Bedroom</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Bedframe</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Mattress</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Dresser</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Bureau</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Nightstand</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Bedroom Lamp</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Wardrobe</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary>Home Office</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Desk</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Desk Chair</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Filing Cabinet</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary>Kitchen &amp; Dining Room</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Kitchen Table</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Dining Room Table</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Kitchen Chair</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Dining Room Chair</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">China Cabinet</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Buffet</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Countertop</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Kitchen Appliance</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Kitchen Cabinet</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Stool</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary>Clothing</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Gently-Worn Clothing</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Outerwear</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Footwear</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Formalwear</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Athletic Wear</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Children's Clothing</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">New Undergarments</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Seasonal Apparel</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Accessories</li>
+            </ul>
+          </details>
+
+          <details class="acc">
+            <summary>Business</summary>
+            <ul class="list-none m-0 px-[1.4rem] pb-[1.3rem] flex flex-wrap gap-2">
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Office Furniture</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Electronics</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Office Supplies</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Breakroom Appliances</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Decor</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Storage Solutions</li>
+              <li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Retail Fixtures</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Cleaning Equipment</li><li class="bg-white border border-line rounded-full px-4 py-1.5 text-[0.85rem] text-muted">Branded Merchandise</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Comp runs 0-720, but the last item ("Bed") lives 549-720 and exits
+             on the final frames, leaving the canvas empty. Stopping at 660
+             holds the bed on screen. -->
+        <div class="lottie-box aspect-[4/5] max-w-[420px] lg:max-w-none mx-auto lg:mx-0 lg:-mt-12"
+             data-lottie="animations/Items_illustration-1.json"
+             data-lottie-stop="660"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY BOSTON CHOOSES RESUPPLY ============ -->
+  <section class="grid lg:grid-cols-2 bg-panel">
+    <div>
+      <img src="press-main-34-1-1536x1024.jpg"
+           alt="Three ReSupply crew members loading a white sofa into a donation truck"
+           class="block w-full h-full min-h-[320px] object-cover">
+    </div>
+
+    <div class="flex items-center">
+      <div class="px-6 py-14 lg:px-16 lg:py-20 max-w-[46rem]">
+        <h2 class="h-section mb-5">Why Boston Chooses ReSupply</h2>
+
+        <p class="mb-8 text-[0.97rem] text-muted">
+          From Beacon Hill walk-ups to Dorchester triple-deckers, we handle the
+          stairs, the disassembly, and the delivery to a local charity.
+        </p>
+
+        <ul class="list-none m-0 p-0 grid gap-3.5 mb-8">
+          <li class="check-card">
+            <strong>Scheduled Convenience</strong>
+            Book online in minutes. Choose your pickup window and confirm your
+            address. Same-week availability in most markets.
+          </li>
+          <li class="check-card">
+            <strong>Inside-Home Pickup</strong>
+            No curbside drop. No rental trucks. The team collects from any room
+            in your home, including upper floors.
+          </li>
+          <li class="check-card">
+            <strong>Disassembly Included</strong>
+            Beds, bookshelves, sectionals, and other multi-piece furniture get
+            broken down on the spot at no additional charge.
+          </li>
+          <li class="check-card">
+            <strong>Direct to Charity</strong>
+            Items go to a local nonprofit partner in your region. Not a
+            warehouse. Not a third-party auction. Straight to the organization
+            that needs them.
+          </li>
+          <li class="check-card">
+            <strong>Tax Receipt Included</strong>
+            A tax receipt is delivered to your inbox after every completed
+            pickup, documenting your donation for filing purposes.
+          </li>
+          <li class="check-card">
+            <strong>Accredited and Accountable</strong>
+            BBB Accredited and rated 4.6 stars on Trustpilot, with a
+            logistics-first approach to giving.
+          </li>
+        </ul>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2.5 mb-9 text-base">
+          <strong class="font-bold">Excellent</strong>
+          <span><strong class="font-bold">4.6</strong> out of 5</span>
+          <img src="card-logo/trustpilot.svg" alt="Trustpilot" class="block h-5 w-auto">
+          <img src="card-logo/bbb-a-plus.png" alt="BBB Accredited Business" class="block h-8 w-auto">
+        </div>
+
+        <a class="btn btn-blue btn-lg cta-arrow" href="#schedule">
+          Schedule A Pickup <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCHEDULE YOUR PICKUP ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap grid lg:grid-cols-2 gap-8 lg:gap-[4.5rem] items-center">
+
+      <div>
+        <h2 class="h-section mb-5">Schedule your couch donation pickup in Boston</h2>
+
+        <p class="mb-4 text-[0.97rem] text-muted">
+          Book online in minutes or call
+          <a href="tel:7654366283" class="font-semibold">(765) 436-6283</a>, open 9 a.m. to 8 p.m.
+          Eastern, 7 days a week. Walk-up or elevator building, the team comes
+          to you.
+        </p>
+
+        <p class="mb-8 text-[0.97rem] font-semibold text-navy">
+          Call <a href="tel:7654366283">(765) 436-6283</a> or
+          <a href="#schedule">book online today</a> to schedule convenient
+          donation pickup in Boston.
+        </p>
+
+        <ul class="list-none m-0 p-0 grid gap-3.5">
+          <li class="check-card">
+            <strong>Any Item, Any Room, Any Floor</strong>
+            We remove furniture from wherever it's located, including upstairs
+            rooms, basements, apartments, and office buildings.
+          </li>
+          <li class="check-card">
+            <strong>Disassembly Included</strong>
+            Many furniture items can be disassembled on-site when necessary to
+            ensure safe removal.
+          </li>
+          <li class="check-card">
+            <strong>No Item Too Bulky or Heavy</strong>
+            From oversized sectionals to large dining sets, our experienced
+            team handles the heavy lifting for you.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <img src="services-img-5-1.jpg"
+             alt="Two ReSupply crew members carrying a wooden dresser down a front walkway"
+             class="block w-full h-auto aspect-[5/4] object-cover rounded-[18px]">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ LOCATIONS ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+      <h2 class="h-section text-center mb-5">We pick up, so you can give back</h2>
+
+      <p class="max-w-[52rem] mx-auto mb-4 text-center text-[0.97rem] text-muted">
+        ReSupply makes donation pickup simple in Boston and across 48 states.
+        Whether you are clearing a whole house before a move or a single
+        dresser from a downsizing, we handle the scheduling, the heavy
+        lifting, and the delivery to a local charity. Giving made simple, the
+        way it should be.
+      </p>
+
+      <p class="max-w-[52rem] mx-auto mb-12 text-center text-[0.97rem] text-muted">
+        Looking for something else in Boston? We also pick up
+        <a href="#">couches</a>, <a href="#">mattresses</a>, and
+        <a href="#">appliances</a>, or
+        <a href="#">see all Boston donation pickup services</a>.
+      </p>
+
+      <p class="text-center text-[0.85rem] font-bold uppercase tracking-[0.12em] text-muted mb-6">
+        Donation Pickup Available in 48 States
+      </p>
+
+      <ul class="list-none m-0 p-0 flex flex-wrap justify-center gap-2.5">
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Phoenix</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Boston</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">St. Louis</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Chicago</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">New York</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">San Diego</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Los Angeles</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Philadelphia</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Washington</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Florida</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">Texas</a></li>
+        <li><a href="#" class="inline-block bg-white border border-line rounded-full px-[1.1rem] py-[0.45rem] text-[0.9rem] font-semibold text-navy no-underline hover:border-blue hover:text-blue">+ 37 More</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="py-16 lg:py-[4.5rem]">
+    <div class="wrap">
+      <h2 class="h-section text-center mb-5">Frequently Asked Questions</h2>
+
+      <p class="max-w-[46rem] mx-auto mb-12 text-center text-[0.97rem] text-muted">
+        Have questions about donation pickup in Boston? Our teams handle the
+        heavy lifting from inside your home and deliver straight to local
+        Boston-area charities. Book online or by phone today.
+      </p>
+
+      <div class="grid gap-3">
+        <details class="acc">
+          <summary>Do you pick up sectionals and sleeper sofas in Boston?</summary>
+          <div class="px-[1.4rem] pb-[1.3rem]">
+            <p class="m-0 max-w-[62rem] text-[0.97rem] text-muted leading-relaxed">Yes. Sectionals, sleeper sofas, loveseats, and recliners all qualify as long as they are clean, usable, and in good condition. The team disassembles sectionals when needed.</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>What does a donation pickup cost in Boston?</summary>
+          <div class="px-[1.4rem] pb-[1.3rem]">
+            <p class="m-0 max-w-[62rem] text-[0.97rem] text-muted leading-relaxed">Priority pickups start at $99, and you see your exact price before you confirm. The price covers the team, the carry down however many flights your building has, transport, and delivery to a nonprofit partner. No surprises at the curb.</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>How do I schedule a Boston pickup?</summary>
+          <div class="px-[1.4rem] pb-[1.3rem]">
+            <p class="m-0 max-w-[62rem] text-[0.97rem] text-muted leading-relaxed">Book online in a few minutes or call <a href="tel:7654366283">(765) 436-6283</a>, open 9 a.m. to 8 p.m. Eastern, 7 days a week. Choose the window that fits your week and the team handles the rest, stairs included.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="pt-16 pb-8 bg-white border-t border-line">
+  <div class="wrap grid lg:grid-cols-[260px_1fr] gap-12 lg:gap-20 items-start">
+
+    <div>
+      <img src="ReSupply-Logo-Rendered-e1698694854259.webp" alt="ReSupply" class="block h-[82px] w-auto mb-10">
+
+      <ul class="list-none m-0 p-0 flex items-center gap-[1.15rem] mb-6">
+        <li>
+          <a href="#" aria-label="Instagram" class="block text-navy hover:text-blue">
+            <svg viewBox="0 0 24 24" class="block w-5 h-5 fill-none stroke-current stroke-[1.8]" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1.2" class="fill-current stroke-none"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="Facebook" class="block text-navy hover:text-blue">
+            <svg viewBox="0 0 24 24" class="block w-5 h-5 fill-current stroke-none" aria-hidden="true">
+              <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.3-.04-1.3-.13-2.45-.13-2.4 0-4.05 1.47-4.05 4.18V9.9H7.5V13h2.7v8h3.3z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="LinkedIn" class="block text-navy hover:text-blue">
+            <svg viewBox="0 0 24 24" class="block w-5 h-5 fill-current stroke-none" aria-hidden="true">
+              <path d="M6.94 8.5H3.9V21h3.04V8.5zM5.42 3a1.76 1.76 0 100 3.53A1.76 1.76 0 005.42 3zM20.1 21h-3.03v-6.1c0-1.45-.03-3.32-2.02-3.32-2.03 0-2.34 1.58-2.34 3.21V21H9.68V8.5h2.91v1.71h.04c.4-.77 1.4-1.58 2.88-1.58 3.08 0 3.65 2.03 3.65 4.67V21z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="Google" class="block text-navy hover:text-blue">
+            <svg viewBox="0 0 24 24" class="block w-5 h-5 fill-current stroke-none" aria-hidden="true">
+              <path d="M12.24 10.29v3.35h5.58c-.24 1.44-1.7 4.23-5.58 4.23-3.36 0-6.1-2.78-6.1-6.2s2.74-6.2 6.1-6.2c1.91 0 3.19.81 3.92 1.51l2.67-2.57C17.1 2.8 14.87 1.8 12.24 1.8 6.9 1.8 2.6 6.1 2.6 11.44s4.3 9.64 9.64 9.64c5.56 0 9.25-3.91 9.25-9.41 0-.63-.07-1.11-.15-1.59h-9.1z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <img src="bbb-footer.svg" alt="BBB A+ Rating, Accredited Business" class="block w-full max-w-[200px] h-auto mb-5">
+
+      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-[0.85rem] text-navy">
+        <strong class="font-bold">Excellent</strong>
+        <span><strong class="font-bold">4.6</strong> out of 5</span>
+        <img src="card-logo/trustpilot.svg" alt="Trustpilot" class="block h-[15px] w-auto">
+      </div>
+    </div>
+
+    <div>
+      <div class="flex flex-wrap items-start justify-between gap-8 mb-14">
+        <p class="m-0 max-w-[26rem] text-[1.05rem] font-bold leading-snug text-navy">
+          Priority donation pickups within 24 hours and delivered to local non profits.
+        </p>
+
+        <div class="grid gap-2.5 justify-items-start lg:justify-items-stretch">
+          <a class="btn btn-blue text-center text-[0.85rem] px-6 py-[0.7rem]" href="#schedule">Schedule Donation</a>
+          <a class="btn btn-outline text-center text-[0.85rem] px-6 py-[0.6rem]" href="tel:7654366283">7654-DONATE</a>
+        </div>
+      </div>
+
+      <nav class="grid grid-cols-2 lg:grid-cols-4 gap-8" aria-label="Footer">
+        <div>
+          <h3 class="m-0 mb-4 text-[0.95rem] font-bold text-navy tracking-normal">Our Services</h3>
+          <ul class="list-none m-0 p-0 grid gap-2.5">
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Services</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Customer Reviews</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Locations We Serve</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="m-0 mb-4 text-[0.95rem] font-bold text-navy tracking-normal">Our Mission</h3>
+          <ul class="list-none m-0 p-0 grid gap-2.5">
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Our Story</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="m-0 mb-4 text-[0.95rem] font-bold text-navy tracking-normal">Partner With Us</h3>
+          <ul class="list-none m-0 p-0 grid gap-2.5">
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">I'm a Charity</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">I'm a Hauler</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="m-0 mb-4 text-[0.95rem] font-bold text-navy tracking-normal">Resources</h3>
+          <ul class="list-none m-0 p-0 grid gap-2.5">
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Donor Support</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Blog</a></li>
+            <li><a href="#" class="text-[0.92rem] text-navy no-underline hover:text-blue">Press</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+
+  <div class="wrap">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-12 pt-6 border-t border-line text-[0.9rem] text-navy">
+      <a href="#" class="text-navy no-underline hover:text-blue">Privacy Policy</a>
+      <span class="text-line" aria-hidden="true">|</span>
+      <a href="#" class="text-navy no-underline hover:text-blue">Donor Terms of Use</a>
+      <span class="text-line" aria-hidden="true">|</span>
+      <a href="#" class="text-navy no-underline hover:text-blue">Charity Terms of Use</a>
+      <span class="text-line" aria-hidden="true">|</span>
+      <span>2026 ReSupply, Inc.</span>
+    </div>
+  </div>
+</footer>
 
 <script>
   // ZIP availability check
@@ -3189,13 +1235,13 @@ h2,
 
       if (!/^\d{5}$/.test(zip)) {
         out.textContent = "Please enter a valid 5-digit ZIP code.";
-        out.style.color = "var(--red)";
+        out.style.color = "#d8232a";
         input.focus();
         return;
       }
 
       // No coverage API wired up yet — this confirms the entry and hands off
-      out.style.color = "var(--blue)";
+      out.style.color = "#1a6fd4";
       out.textContent =
         "Checking availability for " + zip + ". Pickups are typically available within 24 hours.";
     });
@@ -3204,6 +1250,7 @@ h2,
 
 <script src="lottie_light.min.js"></script>
 <script>
+  // Coverage map
   (function () {
     var host = document.getElementById("pickup-map");
     if (!host || !window.lottie) return;
@@ -3257,8 +1304,8 @@ h2,
 </script>
 
 <script>
-  // Heavy-lifting cards: one Lottie per [data-lottie], each playing once as it
-  // scrolls into view (Elementor's "arriving_to_viewport" trigger).
+  // One Lottie per [data-lottie], each playing once as it scrolls into view
+  // (Elementor's "arriving_to_viewport" trigger).
   (function () {
     var hosts = document.querySelectorAll("[data-lottie]");
     if (!hosts.length || !window.lottie) return;
@@ -3317,7 +1364,7 @@ h2,
 </script>
 
 <script>
-  // Reviews rail: arrow buttons + click-and-drag scrolling
+  // Reviews rail: arrow buttons + scroll-position sync
   (function () {
     var rail = document.querySelector(".review-cards");
     if (!rail) return;
